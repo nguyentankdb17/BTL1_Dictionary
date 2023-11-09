@@ -83,6 +83,9 @@ public class Google_Controller {
     private ImageView Switch_Button;
 
     @FXML
+    private ImageView STT;
+
+    @FXML
     private Button Translate_Button;
 
     @FXML
@@ -128,6 +131,34 @@ public class Google_Controller {
         } else if (clickedImageView == voice_to) {
             playSound(output.getText().trim(),!checked);
         }
+    }
+
+    @FXML
+    void speechToText(MouseEvent event) throws IOException {
+        String pythonScriptPath = "D:\\Code_vsc\\Python_Basic\\Speech.py";
+        String[] cmd = new String[2];
+        cmd[0] = "python";
+        cmd[1] = pythonScriptPath;
+//        for(int i = 0; i < args.length; i++) {
+//            cmd[i+2] = args[i];
+//            System.out.println("tham so dong lenh la: " + args[i]);
+//        }
+
+// create runtime to execute external command
+        System.out.println("ready to speech");
+        Runtime rt = Runtime.getRuntime();
+        Process pr = rt.exec(cmd);
+
+// retrieve output from python script
+        BufferedReader bfr = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+        String line = "";
+        String resu = "";
+        while((line = bfr.readLine()) != null) {
+// display each output line form python script
+            resu+=line;
+            System.out.println(line);
+        }
+        input.setText(resu);
     }
 
     static void playSound(String in, boolean check) {

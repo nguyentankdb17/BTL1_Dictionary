@@ -27,10 +27,8 @@ import javax.sound.sampled.Clip;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import java.net.*;
 import java.util.ResourceBundle;
-
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 
@@ -219,6 +217,7 @@ public class Search_Controller implements Initializable {
         fw.close();
 
         voice.setImage(Voice_Image);
+        System.out.println(Database_Controller.GetWordFromDatabase(input));
         meaning.getEngine().loadContent(Database_Controller.GetWordFromDatabase(input), "text/html");
     }
 

@@ -39,7 +39,7 @@ public class Database_Controller {
 
     public static String GetWordFromDatabase(String input) throws Exception {
         StringBuilder res = new StringBuilder();
-
+        String hmtlans = "";
         try {
             Class.forName("org.sqlite.JDBC");
         } catch (Exception e) {
@@ -50,10 +50,11 @@ public class Database_Controller {
         List<Word> words = new ArrayList<>();
 
         try (Connection connection1 = DriverManager.getConnection(
-                "jdbc:sqlite:C:\\Users\\ADM\\OneDrive\\Documents\\IDEA Projects\\BTL1_Dictionary\\src\\main\\resources\\com\\example\\btl1_dictionary\\Database\\dict_hh.db");) {
+                "jdbc:sqlite:D:\\Intell\\BTL1_Dictionary\\src\\main\\resources\\com\\example\\btl1_dictionary\\Database\\dict_hh.db");) {
             if (connection1 != null) {
                 connection = connection1;
             }
+            System.out.println(connection1);
             String querry = String.format("SELECT * FROM av WHERE word LIKE '%s'", input);
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(querry);
@@ -65,6 +66,7 @@ public class Database_Controller {
                 String word = resultSet.getString(2);
                 String meaning = resultSet.getString(3);
                 String pro = resultSet.getString(5);
+                hmtlans = resultSet.getString(3);
                 i++;
                 Word w = new Word(id, word, meaning, pro);
                 words.add(w);
