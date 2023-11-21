@@ -134,7 +134,101 @@ class Trie {
         }
     }
 }
+class TrieV {
 
+    private static final ArrayList<String> searchedWords = new ArrayList<>();
+    private static final Trie.TrieNode root = new Trie.TrieNode();
+
+    public static ArrayList<String> getSearchedWords() {
+        return searchedWords;
+    }
+
+    /**
+     * Insert word `target` into Trie DS.
+     *
+     * @param target the word to insert
+     */
+    public static void insert(String target) {
+        int length = target.length();
+
+        Trie.TrieNode pCrawl = root;
+
+        for (int i = 0; i < length; i++) {
+            char index = target.charAt(i);
+
+            if (pCrawl.children.get(index) == null) {
+                pCrawl.children.put(index, new Trie.TrieNode());
+            }
+
+            pCrawl = pCrawl.children.get(index);
+        }
+
+        // Set `target` word ends at pCrawl
+        pCrawl.isEndOfWord = true;
+    }
+
+    private static void GetWordsSubtree(Trie.TrieNode pCrawl, String target) {
+        if (pCrawl.isEndOfWord) {
+            searchedWords.add(target);
+        }
+        for (char index : pCrawl.children.keySet()) {
+            if (pCrawl.children.get(index) != null) {
+                GetWordsSubtree(pCrawl.children.get(index), target + index);
+            }
+        }
+    }
+
+    public static ArrayList<String> search(String prefix) {
+        if (prefix.isEmpty()) {
+            return new ArrayList<>();
+        }
+        searchedWords.clear();
+        int length = prefix.length();
+        Trie.TrieNode pC = root;
+
+        for (int i = 0; i < length; i++) {
+            char index = prefix.charAt(i);
+
+            if (pC.children.get(index) == null) {
+                return getSearchedWords();
+            }
+
+            pC = pC.children.get(index);
+        }
+        GetWordsSubtree(pC, prefix);
+        return getSearchedWords();
+    }
+
+    public static void delete(String target) {
+        int length = target.length();
+
+        Trie.TrieNode pC = root;
+
+        for (int i = 0; i < length; i++) {
+            char index = target.charAt(i);
+            if (pC.children.get(index) == null) {
+                System.out.println("This word has not been inserted");
+                return;
+            }
+            pC = pC.children.get(index);
+        }
+        if (!pC.isEndOfWord) {
+            System.out.println("This word has not been inserted");
+            return;
+        }
+
+        pC.isEndOfWord = false;
+    }
+    public static class TrieNodeV {
+        Map<Character, TrieV.TrieNodeV> children = new TreeMap<>();
+        /* isEndOfWord is true if the node represents the end of a word */
+        boolean isEndOfWord;
+
+        TrieNodeV() {
+            isEndOfWord = false;
+        }
+    }
+}
 public class Database_Connect {
 
     static Connection connection = null;
@@ -225,7 +319,32 @@ public class Database_Connect {
         meaning = res2.toString();
         both = word.concat(meaning);
     }
+    public static void loadSuggestionsViet() {
+        try {
+            Class.forName("org.sqlite.JDBC");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try (Connection connection1 = DriverManager.getConnection(
+                "jdbc:sqlite:src/main/resources/com/example/btl1_dictionary/Database/dict_hh.db");) {
+            if (connection1 != null) {
+                connection = connection1;
+            }
+            String querry = "SELECT word FROM va";
 
+            PreparedStatement preparedStatement;
+            preparedStatement = connection.prepareStatement(querry);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            long i = 0;
+            while (resultSet.next() == true) {
+                String word = resultSet.getString(1);
+                TrieV.insert(word);
+                i++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static void loadSuggestions() {
         try {
             Class.forName("org.sqlite.JDBC");
