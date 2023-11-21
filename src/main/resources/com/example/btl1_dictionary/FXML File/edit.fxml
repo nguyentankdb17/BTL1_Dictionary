@@ -71,7 +71,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="Game_Button" fitHeight="85.0" fitWidth="85.0" layoutY="525.0" onMouseEntered="#Entered" onMouseExited="#Exited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Game_Button" fitHeight="85.0" fitWidth="85.0" layoutY="525.0" onMouseClicked="#handleSceneSwitch" onMouseEntered="#Entered" onMouseExited="#Exited" pickOnBounds="true" preserveRatio="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>

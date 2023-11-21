@@ -115,7 +115,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="658.0" layoutY="443.0" prefHeight="43.0" prefWidth="146.0" style="-fx-background-color: transparent;" text="SPEAKING">
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="643.0" layoutY="443.0" prefHeight="43.0" prefWidth="146.0" style="-fx-background-color: transparent;" text="SPEAKING">
                <font>
                   <Font name="Segoe UI Black" size="20.0" />
                </font>

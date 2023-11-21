@@ -130,7 +130,7 @@
                         <Image url="@../Image/funQuiz/answer-icon.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="answer" alignment="CENTER" focusTraversable="false" layoutY="56.0" prefHeight="43.0" prefWidth="426.0" style="-fx-background-color: transparent;">
+                  <TextField fx:id="answer" alignment="CENTER" focusTraversable="false" layoutY="56.0" prefHeight="43.0" prefWidth="426.0">
                      <font>
                         <Font name="Segoe UI Black" size="15.0" />
                      </font>
@@ -140,7 +140,10 @@
                         <Image url="@../Image/funQuiz/explanation-icon.png" />
                      </image>
                   </ImageView>
-                  <TextArea fx:id="explanation" blendMode="DARKEN" focusTraversable="false" layoutX="4.0" layoutY="150.0" prefHeight="182.0" prefWidth="420.0" style="-fx-background-color: transparent;" />
+                  <TextArea fx:id="explanation" blendMode="DARKEN" focusTraversable="false" layoutX="4.0" layoutY="150.0" prefHeight="182.0" prefWidth="420.0">
+                     <font>
+                        <Font name="Segoe UI Emoji" size="15.0" />
+                     </font></TextArea>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="submit" layoutX="416.0" layoutY="287.0" prefHeight="338.0" prefWidth="426.0">

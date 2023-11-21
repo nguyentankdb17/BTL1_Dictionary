@@ -5,16 +5,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.awt.*;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
 import java.util.List;
 
 public abstract class General_Controller {
@@ -27,6 +35,11 @@ public abstract class General_Controller {
 
     @FXML
     private ImageView Game_Button;
+
+    public Stage stage;
+    public  Scene scene;
+
+    private SingleSelectionModel<Scene> sceneModel;
 
     public ImageView getGame_Button() {
         return Game_Button;
@@ -144,12 +157,54 @@ public abstract class General_Controller {
         br.close();
     }
 
+    void playSound(String in, boolean check) {
+        try {
+            String tmp = in.replace(" ", "%20");
+            tmp = tmp.replace("\n", "%20");
+            String apiUrl = (check) ? "https://api.voicerss.org/?key=331802f6088c4348b53f5cb3f553e3f3&hl=en-us&v=Chi&src="
+                    : "https://api.voicerss.org/?key=331802f6088c4348b53f5cb3f553e3f3&hl=vi-vn&v=Odai&src=";
+            apiUrl += tmp;
+            URI uri = new URI(apiUrl);
+            URL url = uri.toURL();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            InputStream inputStream = connection.getInputStream();
+            byte[] data = inputStream.readAllBytes();
+
+            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data);
+
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(byteArrayInputStream);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+
+            clip.start();
+
+            Thread.sleep(clip.getMicrosecondLength() / 1000);
+
+            clip.close();
+            audioInputStream.close();
+            byteArrayInputStream.close();
+            inputStream.close();
+            connection.disconnect();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleFontsize(TextField textField) {
+        int textLength = textField.getText().length();
+        double textFieldWidth = textField.getWidth();
+        Font font = textField.getFont();
+        System.out.println(font.toString());
+    }
+
     @FXML
     public void switchScene(String fxmlPath, MouseEvent event) {
         try {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Parent fxmlLoader = FXMLLoader.load(getClass().getResource(fxmlPath));
-            Scene scene = new Scene(fxmlLoader, 875, 650);
+            scene = new Scene(fxmlLoader, 875, 650);
             stage.setTitle("DICTIONARY");
             stage.setScene(scene);
             stage.show();

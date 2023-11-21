@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -107,7 +108,7 @@ public class Google_Controller extends General_Controller {
             try {
                 Platform.runLater(() -> {
                     micro.setImage(Micro_On_Image);
-                    input.setText("Please speak to the microphone");
+                    input.setText("Recording...");
                     input.setEditable(false);
                 });
 
@@ -150,42 +151,11 @@ public class Google_Controller extends General_Controller {
     }
 
     @FXML
-    void onKeyTyped(KeyEvent event) {
+    void onKeyPressed(KeyEvent event) {
         output.clear();
-    }
-
-    static void playSound(String in, boolean check) {
-        try {
-            String tmp = in.replace(" ", "%20");
-            tmp = tmp.replace("\n", "%20");
-            String apiUrl = (check) ? "https://api.voicerss.org/?key=331802f6088c4348b53f5cb3f553e3f3&hl=en-us&v=Chi&src="
-                    : "https://api.voicerss.org/?key=331802f6088c4348b53f5cb3f553e3f3&hl=vi-vn&v=Odai&src=";
-            apiUrl += tmp;
-            URI uri = new URI(apiUrl);
-            URL url = uri.toURL();
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            InputStream inputStream = connection.getInputStream();
-            byte[] data = inputStream.readAllBytes();
-
-            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data);
-
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(byteArrayInputStream);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-
-            clip.start();
-
-            Thread.sleep(clip.getMicrosecondLength() / 1000);
-
-            clip.close();
-            audioInputStream.close();
-            byteArrayInputStream.close();
-            inputStream.close();
-            connection.disconnect();
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (event.getCode() == KeyCode.DELETE || event.getCode() == KeyCode.BACK_SPACE) {
+            voice_from.setImage(null);
+            voice_to.setImage(null);
         }
     }
 

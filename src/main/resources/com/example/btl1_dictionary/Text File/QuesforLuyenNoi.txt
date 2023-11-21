@@ -1,18 +1,210 @@
-01,What’s up
-02,How’s it going
-03,What have you been doing
-04,Is that so
-05,How come
-06,What is your name
-07,How old are you
-08,How are you
-09,Where are you coming from
-10,Can I help you
-11Hey, how’s it going
-12,How do you do
-13,Which company do you work for
-14,Are you okay
-15,Where do you live
-16,How are things going with you.
-17,What are your hobbies.
-18,My brother lived his life with integrity against FIFA.
+0, Family
+0.00 My family has four members.
+0.01 My family is small nuclear family belonging to the middle class category.
+0.02 In my family, we all have deep respect and love towards each other.
+0.03 My family often invites relatives and friends on festivals and holidays.
+0.04 My family celebrates every festival, whether local or national, with joy and enthusiasm.
+0.05 My parents are my biggest cheerleaders and role models.
+0.06 In times of trouble, my family is my safety net.
+0.07 Actually, it was how my family always celebrated Christmas.
+0.8 Every weekend I go on a long drive or a picnic with my family.
+0.9 Everyone in my family eats dinner together, from young to elder.
+0.10 Family traditions, like game nights or Sunday brunches, strengthen our bond.
+0.11 Our family photo album is a treasure trove of cherished memories over the years.
+0.12 Shared laughter during family gatherings creates an atmosphere of joy and warmth.
+0.13 We value open communication, allowing each family member to express thoughts freely.
+0.14 Family vacations are an annual tradition, filled with adventure and relaxation.
+0.15 Celebrating achievements, big or small, is a collective joy in our family.
+0.16 Each family member contributes to household chores, fostering a sense of responsibility.
+0.17 Our family motto is "support and encourage," creating a positive and uplifting environment.
+0.18 Family discussions on important decisions involve everyone's input and perspective.
+0.19 Family is the anchor that grounds us in life's storms, providing unwavering support.
+1, Movies
+1.00 Cinema is a wonderful gift of science.
+1.01 Movies are a very popular entertainment medium among common people.
+1.02 If a film was successful, the producer would have earned a good.
+1.03 Movies are being made in almost all languages of the world.
+1.04 Films are of two types. There are documentary films and feature films.
+1.05 Films provide relaxation and fun for all those people who have to work hard and struggle.
+1.06 Some popcorn and a movie sounded like a good way to relax.
+1.07 When the movie was over, she would smile, get up, and go home.
+1.08 Are you dreaming about becoming a celebrity or movie star?
+1.09 I considered walking downtown to a movie, something I hadn't done in a couple of years.
+1.10 Movie marathons at home, with friends and snacks, are a favorite weekend activity.
+1.11 A well-crafted film has the power to evoke a wide range of emotions in the audience.
+1.12 Exploring movie genres broadens my cinematic experience.
+1.13 Cinematic storytelling allows us to escape reality and enter fantastical worlds for a while.
+1.14 The evolution of special effects in movies has transformed the way stories are visually told.
+1.15 Movie soundtracks often enhance the emotional impact and resonance of key scenes.
+1.16 Film festivals expose me to unique cinematic perspectives.
+1.17 Discussing favorite movies with friends often leads to discovering hidden cinematic gems.
+1.18 Movie quotes often become a shared language among friends, creating lasting inside jokes.
+1.19 Classic movies feel like revisiting old friends, evoking nostalgia.
+2, Travel
+2.00 Exploring new cultures and cuisines is my favorite aspect of travel.
+2.01 Traveling provides opportunities for personal growth and gaining new perspectives.
+2.02 Immersing myself in the history of a destination is an integral part of my travel experience.
+2.03 Traveling solo allows me to step out of my comfort zone and embrace independence.
+2.04 Capturing memories through photographs is a cherished ritual during my travels.
+2.05 Traveling on a budget has taught me to appreciate simplicity and local experiences.
+2.06 I believe that travel is the best form of education, offering lessons beyond the classroom.
+2.07 Experiencing the beauty of natural landscapes is a highlight of my travel adventures.
+2.08 Trying traditional dishes in each destination is an essential part of my travel itinerary.
+2.09 I prioritize sustainable travel practices to protect the environment.
+2.10 Wandering through local markets is a favorite way to absorb the authenticity of a place.
+2.11 Adapting to different time zones has become a skill acquired through frequent travel.
+2.12 Exploring hidden gems off the beaten path adds an element of surprise to my journeys.
+2.13 Meeting fellow travelers and locals enriches the cultural tapestry of my travel experiences.
+2.14 The anticipation of a new adventure makes the planning phase an exciting part of travel.
+2.15 Discovering unique traditions and customs provides a deeper understanding of diverse cultures.
+2.16 Traveling has broadened my perspective, fostering a sense of empathy and tolerance.
+2.17 Climbing a viewpoint for a panoramic cityscape is a must-do in every destination.
+2.18 Getting lost in a new city often leads to unexpected discoveries and memorable moments.
+2.19 Sustainable travel choices not only benefit the environment but also support local communities.
+3, Free Time
+3.00 During my free time, I enjoy reading books and getting lost in different worlds.
+3.01 I often spend my free time exploring new hobbies to keep things interesting.
+3.02 Relaxing at home with a cup of tea and music is my favorite way to unwind during free time.
+3.03 In my free time, I like to experiment with cooking and try out new recipes.
+3.04 Going for a walk in the park is a simple yet refreshing way for me to spend my free time.
+3.05 Playing musical instruments is a passion of mine that I pursue during leisure hours.
+3.06 My free time is often devoted to creative writing and expressing my thoughts on paper.
+3.07 I cherish the moments of solitude and self-reflection during my free time.
+3.08 Free time allows me to pursue personal projects and work on my creative endeavors.
+3.09 Sometimes, I enjoy spending my free time volunteering for community initiatives.
+3.10 Binge-watching a favorite TV series becomes a guilty pleasure during my free time.
+3.11 Engaging in outdoor activities, like hiking or biking, rejuvenates me during leisure hours.
+3.12 Attending cultural events or exhibitions is a way I diversify my interests in free time.
+3.13 Free time serves as an opportunity to connect with friends over coffee or a casual meal.
+3.14 Exploring digital art platforms and creating my own designs is a creative outlet for me.
+3.15 Free time rituals, like a morning meditation or yoga session, set a positive tone for the day.
+3.16 Virtual gaming provides a dynamic and interactive way to unwind during free moments.
+3.17 Learning a new language or skill is a productive use of my free time.
+3.18 Nurturing indoor plants and gardening is a therapeutic hobby I enjoy during leisure.
+3.19 Engaging in mindfulness exercises, such as mindful breathing, brings calmness to my free moments.
+4, School
+4.00 School days are some of the most memorable and formative years of my life.
+4.01 I have fond memories of participating in extracurricular activities during my school days.
+4.02 One of my favorite subjects in school was literature, which sparked my love for reading.
+4.03 Teachers play a crucial role in shaping the educational experience for students.
+4.04 School field trips were always exciting, offering a break from routine classroom activities.
+4.05 Balancing academics and social life was a key aspect of my high school experience.
+4.06 Graduating from school marked a significant milestone in my educational journey.
+4.07 The friends I made in school are still an important part of my life today.
+4.08 School projects and group assignments taught me the value of teamwork and collaboration.
+4.09 Reflecting on my school years, I appreciate the skills and knowledge gained.
+4.10 Debates and public speaking in school enhanced my confidence and communication skills.
+4.11 The school library was my haven, and I spent hours immersed in the world of books.
+4.12 Joining a school sports team not only kept me active but also fostered a sense of teamwork.
+4.13 Creative arts classes, like drawing and painting, allowed me to express myself freely.
+4.14 School assemblies were a time for unity, celebrating achievements and shared experiences.
+4.15 Being part of a school club introduced me to like-minded individuals and lifelong friends.
+4.16 School events, like fairs and cultural festivals, added vibrancy to our academic routine.
+4.17 The discipline instilled in me during school years continues to shape my daily habits.
+4.18 School-organized volunteer projects emphasized giving back to the community.
+4.19 Navigating challenging subjects in school taught me resilience and problem-solving skills.
+5, Friend
+5.00 True friends are those who stand by you through thick and thin.
+5.01 Building and maintaining friendships require effort, trust, and understanding.
+5.02 Friendships often form around shared interests and experiences.
+5.03 Spending quality time with friends is essential for a balanced and fulfilling life.
+5.04 I value the diversity of personalities and backgrounds within my friend circle.
+5.05 Friends provide a support system that complements family bonds.
+5.06 Celebrating successes and supporting each other during tough times strengthen friendships.
+5.07 Friendships formed during childhood hold a special place in one's heart.
+5.08 Making new friends as an adult can be both exciting and challenging.
+5.09 Trust and communication are the foundation of any lasting friendship.
+5.10 Friendships can withstand disagreements when there is open and honest communication.
+5.11 Shared values and mutual respect contribute to the longevity of friendships.
+5.12 Expressing gratitude for friends and their positive impact fosters stronger connections.
+5.13 A true friend is someone you can be yourself around without fear of judgment.
+5.14 Apologizing and forgiving are crucial elements in resolving conflicts within friendships.
+5.15 Distance and time apart may test friendships, but true friends pick up where they left off.
+5.16 Friendships that evolve and adapt to life changes are often the most resilient.
+5.17 Balancing individual needs with the dynamics of a group enhances the overall friendship experience.
+5.18 Acts of kindness and thoughtfulness strengthen the bonds of friendship.
+5.19 Embracing change and growth within oneself and friends is vital for lasting connections.
+6, Food
+6.00 Exploring diverse cuisines is one of my favorite things to do during travels.
+6.01 Cooking is a therapeutic activity for me, and I often experiment with new recipes.
+6.02 Comfort food, like homemade macaroni and cheese, is my go-to on lazy evenings.
+6.03 Exploring local food markets is an adventure that I enjoy during my free time.
+6.04 I believe that sharing a meal with loved ones creates special and lasting memories.
+6.05 My family has a tradition of cooking together during holidays, making it a festive experience.
+6.06 Trying street food in different countries is a must for me when traveling abroad.
+6.07 The aroma of freshly baked bread or cookies always brings a sense of warmth and nostalgia.
+6.08 I appreciate the artistry of culinary presentation as much as the taste of the food itself.
+6.09 In my opinion, a well-prepared meal is a reflection of care and attention to detail.
+6.10 Food festivals are an exciting way for me to discover new flavors and culinary trends.
+6.11 Mindful eating, savoring each bite, enhances my overall dining experience.
+6.12 I believe in the importance of a balanced diet for maintaining good health.
+6.13 Growing my own herbs and vegetables connects me more intimately with the food I consume.
+6.14 I enjoy hosting dinner parties, creating a welcoming atmosphere for friends and family.
+6.15 Experimenting with different cooking techniques adds a creative dimension to my culinary pursuits.
+6.16 I have a favorite comfort food that brings me solace during challenging times.
+6.17 Trying a new recipe and successfully mastering it brings a sense of accomplishment.
+6.18 Exploring the cultural significance of traditional dishes deepens my appreciation for global cuisines.
+6.19 Food is a universal language that fosters connections and bridges cultural gaps.
+7, Environment
+7.00 Protecting the environment is a shared responsibility that requires global cooperation.
+7.01 I actively participate in local environmental initiatives to contribute to a greener community.
+7.02 Appreciating nature's beauty inspires me to adopt sustainable practices in my daily life.
+7.03 Conserving resources and energy is a simple but impactful way to help the environment.
+7.04 Planting trees and joining clean-up events fulfill my commitment to environmental conservation.
+7.05 The alarming deforestation rate motivates my support for reforestation efforts.
+7.06 Adopting eco-friendly habits, like recycling, is crucial for a healthier planet.
+7.07 Sustainable living, from reducing waste to supporting eco-friendly products, is vital.
+7.08 Environmental education is crucial for raising awareness about conservation.
+7.09 Respecting the environment is a commitment to future generations.
+7.10 Supporting renewable energy is crucial for a sustainable future.
+7.11 Biodiversity conservation maintains ecosystem balance.
+7.12 Minimizing single-use plastic reduces environmental pollution.
+7.13 Community gardens connect people with the local environment.
+7.14 Advocating for environmental policies is a civic duty.
+7.15 "Reduce, reuse, recycle" guides my environmental approach.
+7.16 Preserving natural habitats is vital for biodiversity.
+7.17 Climate change impacts motivate support for climate action.
+7.18 Sustainable transportation choices reduce carbon footprint.
+7.19 Environmental stewardship promotes both resource protection and justice.
+8, Hobbies
+8.00 Engaging in hobbies like painting and drawing allows me to express my creativity.
+8.01 Gardening is a therapeutic hobby that brings a sense of calmness and connection to nature.
+8.02 Collecting vintage stamps has been a passion of mine since childhood.
+8.03 Hobbies are essential for maintaining a healthy work-life balance and reducing stress.
+8.04 Photography is a hobby that enables me to capture and cherish precious moments.
+8.05 Learning a musical instrument, such as the guitar, is both challenging and rewarding for me.
+8.06 Hobbies provide an opportunity to meet like-minded individuals and build lasting connections.
+8.07 Taking up a new hobby, such as learning a new language, adds excitement to daily life.
+8.08 My collection of books reflects my love for reading as a favorite and lifelong hobby.
+8.09 Exploring different hobbies allows me to discover new interests and facets of myself.
+8.10 Baking is a delightful hobby that combines creativity and a love for sweet treats.
+8.11 Fishing is a relaxing hobby that allows me to connect with nature and unwind.
+8.12 Model building serves as a hands-on and detail-oriented hobby for me.
+8.13 Yoga is both a physical exercise and a meditative hobby in my daily routine.
+8.14 Board games provide a fun and social hobby for friends and family gatherings.
+8.15 Writing short stories is a creative outlet and a cherished hobby of mine.
+8.16 Bird watching is a peaceful hobby that connects me with the natural world.
+8.17 DIY crafting, such as making handmade cards, is a fulfilling and artistic hobby.
+8.18 Playing chess is a strategic and intellectually stimulating hobby I enjoy.
+8.19 Traveling and exploring new places have become a passion and an adventurous hobby for me.
+9, Sport
+9.00 Playing team sports fosters a sense of camaraderie and teamwork.
+9.01 Regular exercise through sports is essential for maintaining physical and mental well-being.
+9.02 Watching live sports events, whether in a stadium or on TV, is an exhilarating experience.
+9.03 Sports teach valuable life skills, such as discipline, perseverance, and resilience.
+9.04 Martial arts, like karate or judo, are effective ways to stay fit and build self-confidence.
+9.05 Being part of a sports club or league creates a sense of community and friendship.
+9.06 Sports competitions, like the Olympics, showcase the diversity and talent of athletes worldwide.
+9.07 Sportsmanship is a fundamental aspect of any sport, promoting fair play and respect.
+9.08 The adrenaline rush from participating in extreme sports is a unique and thrilling experience.
+9.09 Supporting local sports teams is a great way to connect with the community and show team spirit.
+9.10 Jogging is a simple yet effective individual sport for maintaining overall health.
+9.11 Cycling is an eco-friendly and enjoyable sport that combines exercise with exploration.
+9.12 Skiing or snowboarding in winter is an exhilarating way to embrace the cold season.
+9.13 Swimming is a full-body workout and a refreshing sport for physical fitness.
+9.14 Golfing is a leisurely sport that allows for relaxation and socializing.
+9.15 Rock climbing is a challenging and adventurous sport that builds strength and problem-solving skills.
+9.16 Table tennis provides a fast-paced and engaging indoor sport for all skill levels.
+9.17 Surfing is a dynamic water sport that requires balance and a connection with the ocean.
+9.18 Archery is a precision sport that demands focus and control.
+9.19 Participating in charity runs or walks combines sports with community support for a meaningful experience.

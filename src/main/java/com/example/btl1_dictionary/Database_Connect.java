@@ -167,7 +167,7 @@ public class Database_Connect {
     static List<String> answers = new ArrayList<>();
     static List<String> explanations = new ArrayList<>();
 
-    public static void lookUpDatabase(String input) throws Exception {
+    public static void lookUpDatabase(String input, boolean isEnglish) throws Exception {
         StringBuilder res1 = new StringBuilder();
         StringBuilder res2 = new StringBuilder();
         String noMatchingResult = "<h1></h1><h3><i>Xin lỗi , Không có kết quả phù hợp nội dung bạn tìm kiếm !";
@@ -185,7 +185,12 @@ public class Database_Connect {
             if (connection1 != null) {
                 connection = connection1;
             }
-            String querry = String.format("SELECT * FROM av WHERE word = '%s'", input);
+            String querry = "";
+            if (isEnglish == true) {
+                querry = String.format("SELECT * FROM av WHERE word = '%s'", input);
+            } else {
+                querry = String.format("SELECT * FROM va WHERE word = '%s'", input);
+            }
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(querry);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -195,7 +200,7 @@ public class Database_Connect {
                 int id = resultSet.getInt(1);
                 String word = resultSet.getString(2);
                 String html = resultSet.getString(3);
-                String meaning = resultSet.getString(3);
+                String meaning = resultSet.getString(4);
                 String pro = resultSet.getString(5);
                 i++;
                 Word w = new Word(id, word, html, meaning, pro);
@@ -207,14 +212,24 @@ public class Database_Connect {
             }
             found = true;
             boolean first = true;
-            for (Word w : words) {
-                if (first) {
-                    res1.append(w.html, 0, 18 + w.word.length() + w.pronunciation.length());
-                    res2.append(w.html.substring(18 + w.word.length() + w.pronunciation.length()));
-                    first = false;
-                    continue;
+            if (isEnglish) {
+                for (Word w : words) {
+                    if (first) {
+                        res1.append(w.html, 0, 18 + w.word.length() + w.pronunciation.length());
+                        res2.append(w.html.substring(18 + w.word.length() + w.pronunciation.length()));
+                        first = false;
+                        continue;
+                    }
+                    res2.append(w.html.substring(16 + w.word.length()));
                 }
-                res2.append(w.html.substring(16 + w.word.length()));
+            } else {
+                for (Word w : words) {
+                    if (first) {
+                        res1.append(w.html, 0, 9 + w.word.length());
+                        res2.append(w.html.substring(9 + w.word.length()));
+                    }
+                    res2.append(w.html.substring(9 + w.word.length()));
+                }
             }
 
         } catch (Exception e) {
@@ -236,7 +251,7 @@ public class Database_Connect {
             if (connection1 != null) {
                 connection = connection1;
             }
-            String querry = "SELECT word FROM av";
+            String querry = "SELECT word FROM av UNION SELECT word FROM va";
 
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement(querry);

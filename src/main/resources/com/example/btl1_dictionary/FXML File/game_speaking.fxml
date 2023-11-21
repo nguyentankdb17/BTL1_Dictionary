@@ -135,7 +135,179 @@
                   <Font name="Segoe UI Black" size="25.0" />
                </font>
             </TextField>
-            <AnchorPane fx:id="speakField" layoutX="128.0" layoutY="207.0" prefHeight="363.0" prefWidth="698.0">
+            <AnchorPane fx:id="choiceField" layoutX="128.0" layoutY="207.0" prefHeight="363.0" prefWidth="698.0">
+               <children>
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="21.0" layoutY="154.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="FAMILY">
+                     <font>
+                        <Font name="Segoe UI Black" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="146.0" layoutY="154.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="MOVIES">
+                     <font>
+                        <Font name="Segoe UI Black" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="290.0" layoutY="154.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="TRAVEL">
+                     <font>
+                        <Font name="Segoe UI Black" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="559.0" layoutY="154.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="SCHOOL">
+                     <font>
+                        <Font name="Segoe UI Black" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="21.0" layoutY="302.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="FRIEND">
+                     <font>
+                        <Font name="Segoe UI Black" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="147.0" layoutY="302.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="FOOD">
+                     <font>
+                        <Font name="Segoe UI Black" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="274.0" layoutY="302.0" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="ENVIRONMENT">
+                     <font>
+                        <Font name="Segoe UI Black" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="433.0" layoutY="302.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="HOBBIES">
+                     <font>
+                        <Font name="Segoe UI Black" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="433.0" layoutY="154.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="FREE TIME">
+                     <font>
+                        <Font name="Segoe UI Black" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="559.0" layoutY="302.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="SPORT">
+                     <font>
+                        <Font name="Segoe UI Black" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+                  <ImageView fx:id="topic1" fitHeight="84.0" fitWidth="103.0" layoutX="38.0" layoutY="70.0" onMouseClicked="#chooseTopic" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/speaking/topic1.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="32.0" layoutY="-12.0" prefHeight="52.0" prefWidth="634.0" style="-fx-background-color: transparent;" text="CHOOSE THE TOPIC YOU WANT TO PRACTICE">
+                     <font>
+                        <Font name="Cooper Black" size="25.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+                  <ImageView fx:id="topic2" fitHeight="84.0" fitWidth="103.0" layoutX="164.0" layoutY="70.0" onMouseClicked="#chooseTopic" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/speaking/topic2.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="topic3" fitHeight="84.0" fitWidth="103.0" layoutX="307.0" layoutY="70.0" onMouseClicked="#chooseTopic" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/speaking/topic3.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="topic4" fitHeight="84.0" fitWidth="103.0" layoutX="450.0" layoutY="70.0" onMouseClicked="#chooseTopic" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/speaking/topic4.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="topic5" fitHeight="84.0" fitWidth="103.0" layoutX="576.0" layoutY="70.0" onMouseClicked="#chooseTopic" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/speaking/topic5.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="topic6" fitHeight="84.0" fitWidth="103.0" layoutX="38.0" layoutY="218.0" onMouseClicked="#chooseTopic" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/speaking/topic6.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="topic7" fitHeight="84.0" fitWidth="103.0" layoutX="164.0" layoutY="218.0" onMouseClicked="#chooseTopic" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/speaking/topic7.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="topic8" fitHeight="84.0" fitWidth="103.0" layoutX="307.0" layoutY="218.0" onMouseClicked="#chooseTopic" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/speaking/topic8.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="topic9" fitHeight="84.0" fitWidth="103.0" layoutX="450.0" layoutY="218.0" onMouseClicked="#chooseTopic" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/speaking/topic9.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="topic10" fitHeight="84.0" fitWidth="103.0" layoutX="576.0" layoutY="218.0" onMouseClicked="#chooseTopic" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/speaking/topic10.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="speakField" layoutX="128.0" layoutY="207.0" prefHeight="363.0" prefWidth="698.0" visible="false">
                <children>
                   <ImageView fx:id="micro" fitHeight="140.0" fitWidth="165.0" layoutX="279.0" layoutY="112.0" onMouseClicked="#speakToMic" pickOnBounds="true" preserveRatio="true">
                      <cursor>
@@ -145,9 +317,9 @@
                         <Image url="@../Image/Micro_Button.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="sentence" alignment="CENTER" editable="false" focusTraversable="false" layoutX="130.0" layoutY="25.0" prefHeight="52.0" prefWidth="438.0">
+                  <TextField fx:id="sentence" alignment="CENTER" editable="false" focusTraversable="false" layoutX="18.0" layoutY="25.0" maxWidth="700.0" prefHeight="52.0" prefWidth="662.0">
                      <font>
-                        <Font name="Segoe UI Emoji" size="20.0" />
+                        <Font name="Segoe UI Emoji" size="13.0" />
                      </font>
                   </TextField>
                   <TextField fx:id="isMicOn" alignment="CENTER" editable="false" focusTraversable="false" layoutX="74.0" layoutY="280.0" prefHeight="52.0" prefWidth="550.0" style="-fx-background-color: transparent;" text="PLEASE SPEAK FOLLOW SENTENCE ABOVE">

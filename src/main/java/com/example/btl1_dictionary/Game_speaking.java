@@ -1,6 +1,5 @@
 package com.example.btl1_dictionary;
 
-import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -8,12 +7,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -62,6 +57,40 @@ public class Game_speaking extends Games_Controller {
     private TextField isMicOn;
 
     @FXML
+    private AnchorPane choiceField;
+
+    @FXML
+    private ImageView topic1;
+
+    @FXML
+    private ImageView topic10;
+
+    @FXML
+    private ImageView topic2;
+
+    @FXML
+    private ImageView topic3;
+
+    @FXML
+    private ImageView topic4;
+
+    @FXML
+    private ImageView topic5;
+
+    @FXML
+    private ImageView topic6;
+
+    @FXML
+    private ImageView topic7;
+
+    @FXML
+    private ImageView topic8;
+
+    @FXML
+    private ImageView topic9;
+
+
+    @FXML
     private final Image excellent = new Image(getClass().getResource("/com/example/btl1_dictionary/Image/speaking/excellent.png").toExternalForm());
 
     @FXML
@@ -87,24 +116,7 @@ public class Game_speaking extends Games_Controller {
     int sentenceLeft = 0;
 
     public void initialize() throws IOException {
-        String line;
-        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/com/example/btl1_dictionary/Text File/QuesforLuyenNoi.txt"));
-        while ((line = br.readLine()) != null) {
-            if (!line.isEmpty()) {
-                if (!line.equals(" ")) {
-                    sentences.add(line.substring(3));
-                }
-            }
-        }
-        br.close();
 
-        numberSentences = sentences.size();
-        sentenceLeft = numberSentences;
-        Number.setText(number + "/" + numberSentences);
-
-        Random rand = new Random();
-        index = rand.nextInt(sentences.size());
-        sentence.setText(sentences.get(index));
     }
 
     @FXML
@@ -148,7 +160,6 @@ public class Game_speaking extends Games_Controller {
                         youSpeak.setText(null);
                     }
                     if (youSpeak.getText() == null) {
-                        last_score = 0;
                         score.setText(String.valueOf(last_score));
                     } else {
                         last_score = calculateScore(youSpeak.getText(),originalSentence.getText());
@@ -195,13 +206,67 @@ public class Game_speaking extends Games_Controller {
         return (int) (count * 10)/ size;
     }
 
+    @FXML
+    void chooseTopic(MouseEvent event) throws IOException {
+        choiceField.setVisible(false);
+        speakField.setVisible(true);
+        int topic = 0;
+        ImageView clicked = (ImageView) event.getSource();
+        if (clicked == topic1) {
+            topic = 0;
+        } else if (clicked == topic2) {
+            topic = 1;
+        } else if (clicked == topic3) {
+            topic = 2;
+        } else if (clicked == topic4) {
+            topic = 3;
+        } else if (clicked == topic5) {
+            topic = 4;
+        } else if (clicked == topic6) {
+            topic = 5;
+        } else if (clicked == topic7) {
+            topic = 6;
+        } else if (clicked == topic8) {
+            topic = 7;
+        } else if (clicked == topic9) {
+            topic = 8;
+        } else if (clicked == topic10) {
+            topic = 9;
+        }
+        String line;
+        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/com/example/btl1_dictionary/Text File/QuesforLuyenNoi.txt"));
+        while ((line = br.readLine()) != null) {
+            if (!line.isEmpty()) {
+                String tmp = String.valueOf(topic) + ".";
+                if (line.startsWith(tmp)) {
+                    sentences.add(line.substring(4));
+                }
+            }
+        }
+        br.close();
+
+        //handleFontsize(sentence);
+
+        numberSentences = sentences.size();
+        sentenceLeft = numberSentences;
+        Number.setText(number + "/" + numberSentences);
+
+        Random rand = new Random();
+        index = rand.nextInt(sentences.size());
+        sentence.setText(sentences.get(index).toUpperCase());
+    }
+
     @Override
     void Next(MouseEvent event) {
         sentenceLeft--;
+        if (sentenceLeft == 1) {
+            next_button.setVisible(false);
+            nextStep.setVisible(false);
+        }
         sentences.remove(index);
         Random rand = new Random();
         index = rand.nextInt(sentenceLeft);
-        sentence.setText(sentences.get(index));
+        sentence.setText(sentences.get(index).toUpperCase());
         number++;
         Number.setText(number + "/" + numberSentences);
 

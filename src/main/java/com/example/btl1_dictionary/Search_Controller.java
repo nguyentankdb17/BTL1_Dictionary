@@ -4,6 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.*;
@@ -31,17 +35,40 @@ public class Search_Controller extends General_Controller {
 
     @FXML
     private ImageView voice;
+
     @FXML
-    private final Image Voice_Image = new Image(getClass().getResource("/com/example/btl1_dictionary/Image/Voice_Button.png").toExternalForm());
+    private ImageView en_vi;
+
+    @FXML
+    private ImageView vi_en;
 
     @FXML
     private ImageView saved;
+
+    @FXML
+    private ImageView edit;
+
+    @FXML
+    private ImageView delete;
 
     @FXML
     private final Image Saved_Image_Off = new Image(getClass().getResource("/com/example/btl1_dictionary/Image/star_black.png").toExternalForm());
 
     @FXML
     private final Image Saved_Image_On = new Image(getClass().getResource("/com/example/btl1_dictionary/Image/star.png").toExternalForm());
+
+    @FXML
+    private final Image en_vi_on = new Image(getClass().getResource("/com/example/btl1_dictionary/Image/en-vi-on.png").toExternalForm());
+
+    @FXML
+    private final Image en_vi_off = new Image(getClass().getResource("/com/example/btl1_dictionary/Image/en-vi-off.png").toExternalForm());
+
+    @FXML
+    private final Image vi_en_on = new Image(getClass().getResource("/com/example/btl1_dictionary/Image/vi-en-on.png").toExternalForm());
+
+    @FXML
+    private final Image vi_en_off = new Image(getClass().getResource("/com/example/btl1_dictionary/Image/vi-en-off.png").toExternalForm());
+
 
     @FXML
     private WebView word;
@@ -59,15 +86,17 @@ public class Search_Controller extends General_Controller {
 
     private boolean isSaved = false;
 
+    private boolean isEnglish = true;
+
     private List<String> savedList = new ArrayList<>();
     private List<String> historyList = new ArrayList<>();
-    private List<Integer> frequencyList = new ArrayList<>();
 
     public TextField getSearchBar() {
         return searchBar;
     }
 
     public void initialize() {
+        handleFontsize(searchBar);
         Database_Connect.loadSuggestions();
     }
 
@@ -140,15 +169,22 @@ public class Search_Controller extends General_Controller {
         isSaved = false;
         String input = searchBar.getText().toLowerCase();
 
-        Database_Connect.lookUpDatabase(input);
+        System.out.println(isEnglish);
+        Database_Connect.lookUpDatabase(input,isEnglish);
 
         word.getEngine().loadContent(Database_Connect.word, "text/html");
         meaning.getEngine().loadContent(Database_Connect.meaning, "text/html");
 
         if (!Database_Connect.found) {
-            voice.setImage(null);
+            voice.setVisible(false);
+            saved.setVisible(false);
+            edit.setVisible(false);
+            delete.setVisible(false);
         } else {
-            voice.setImage(Voice_Image);
+            voice.setVisible(true);
+            saved.setVisible(true);
+            edit.setVisible(true);
+            delete.setVisible(true);
 
             handleHistory(input);
             handleFrequency(input);
@@ -203,6 +239,7 @@ public class Search_Controller extends General_Controller {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String currentDateString = dateFormat.format(currentDate);
 
+        List<Integer>frequencyList = new ArrayList<>();
         boolean getDate = true;
         String lastDate ="";
         String line = "";
@@ -238,12 +275,16 @@ public class Search_Controller extends General_Controller {
 
     @FXML
     void Voice(MouseEvent event) {
-        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
-        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
-        if(voice!=null) {
-            voice.allocate();
-            voice.speak(searchBar.getText());
-            voice.deallocate();
+        if (isEnglish) {
+            System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+            Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+            if (voice != null) {
+                voice.allocate();
+                voice.speak(searchBar.getText());
+                voice.deallocate();
+            }
+        } else {
+            playSound(searchBar.getText(),isEnglish);
         }
     }
 
@@ -269,6 +310,51 @@ public class Search_Controller extends General_Controller {
         if (selectedIndex >= 0) {
             String selectedItem = suggestion.getItems().get(selectedIndex);
             searchBar.setText(selectedItem);
+        }
+    }
+
+    @FXML
+    void Edit(MouseEvent event) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML File/edit.fxml"));
+        Parent fxmlLoader = loader.load();
+        ((Edit_Controller) loader.getController()).switchToModify(event);
+        ((Edit_Controller) loader.getController()).searchBar.setText(searchBar.getText());
+        ((Edit_Controller) loader.getController()).Search(event);
+
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(fxmlLoader, 875, 650);
+        stage.setTitle("DICTIONARY");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void Delete(MouseEvent event) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML File/edit.fxml"));
+        Parent fxmlLoader = loader.load();
+        ((Edit_Controller) loader.getController()).switchToModify(event);
+        ((Edit_Controller) loader.getController()).searchBar1.setText(searchBar.getText());
+        ((Edit_Controller) loader.getController()).Search(event);
+
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(fxmlLoader, 875, 650);
+        stage.setTitle("DICTIONARY");
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    @FXML
+    void switchLanguage(MouseEvent event) {
+        ImageView clickedImage = (ImageView) event.getSource();
+        if (clickedImage == en_vi) {
+            isEnglish = true;
+            en_vi.setImage(en_vi_on);
+            vi_en.setImage(vi_en_off);
+        } else if (clickedImage == vi_en) {
+            isEnglish = false;
+            en_vi.setImage(en_vi_off);
+            vi_en.setImage(vi_en_on);
         }
     }
 

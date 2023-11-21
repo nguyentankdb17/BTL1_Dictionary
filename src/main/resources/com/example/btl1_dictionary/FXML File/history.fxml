@@ -246,7 +246,7 @@
                 <NumberAxis label="TIMES" side="LEFT" />
               </yAxis>
             </BarChart>
-            <TextField fx:id="today" alignment="CENTER" editable="false" focusTraversable="false" layoutX="755.0" layoutY="235.0" prefHeight="43.0" prefWidth="55.0" style="-fx-background-color: transparent;">
+            <TextField fx:id="today" alignment="CENTER" editable="false" focusTraversable="false" layoutX="755.0" layoutY="235.0" prefHeight="64.0" prefWidth="83.0" style="-fx-background-color: transparent;">
                <font>
                   <Font name="Segoe UI Black" size="30.0" />
                </font>

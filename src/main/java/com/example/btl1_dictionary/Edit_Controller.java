@@ -1,10 +1,10 @@
 package com.example.btl1_dictionary;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.HTMLEditor;
@@ -12,9 +12,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Edit_Controller extends General_Controller {
 
@@ -85,10 +85,10 @@ public class Edit_Controller extends General_Controller {
     private ImageView saved_button;
 
     @FXML
-    private TextField searchBar;
+    public TextField searchBar;
 
     @FXML
-    private TextField searchBar1;
+    public TextField searchBar1;
 
     @FXML
     private ImageView search_button;
@@ -207,27 +207,34 @@ public class Edit_Controller extends General_Controller {
     @FXML
     void Deleted(MouseEvent event) throws IOException {
         String input = searchBar1.getText();
-        System.out.println(input);
-        System.out.println(input.length());
         Database_Connect.deleteWord(input);
+
+        AtomicBoolean userConfirmed = new AtomicBoolean(false);
 
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle(null);
         alert.setHeaderText(null);
         alert.setContentText("Bạn có chắc chắn muốn xóa từ này ?");
-        alert.showAndWait();
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                userConfirmed.set(true);
+            }
+        });
 
-        Alert alert2 = new Alert(AlertType.INFORMATION);
-        alert2.setTitle(" Word Deleted Successfully");
-        alert2.setHeaderText(null);
-        alert2.setContentText("Bạn đã xóa từ thành công");
-        alert2.showAndWait();
-        Trie.delete(input);
+        if (userConfirmed.get()) {
+            Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+            alert2.setTitle("Word Deleted Successfully");
+            alert2.setHeaderText(null);
+            alert2.setContentText("Bạn đã xóa từ thành công");
+            alert2.showAndWait();
 
-        historyList.removeIf(e -> e.equals(input));
-        writeToFile(historyPath,historyList);
-        savedList.removeIf(e -> e.equals(input));
-        writeToFile(savedPath,savedList);
+            Trie.delete(input);
+
+            historyList.removeIf(e -> e.equals(input));
+            writeToFile(historyPath,historyList);
+            savedList.removeIf(e -> e.equals(input));
+            writeToFile(savedPath,savedList);
+        }
     }
 
     @FXML
@@ -241,7 +248,7 @@ public class Edit_Controller extends General_Controller {
         if (clicked == reset_button) {
             addView.setHtmlText("<h1>#nhập từ</h1><h3><i>/#nhập cách phát âm/</i></h3><h2>#nhập loại từ</h2><ul><li>#nhập nghĩa<ul style=\"list-style-type:circle\"><li>#nhập ví dụ tiếng Anh:<i>&nbsp;#nhập ví dụ tiếng Việt</i></li><li>#nhập ví dụ tiếng Anh:<i>&nbsp;#nhập ví dụ tiếng Việt</i></li><li>#nhập ví dụ tiếng Anh:<i>&nbsp;#nhập ví dụ tiếng Việt</i></li></ul></li><li>#nhập nghĩa<ul><li>#nhập ví dụ tiếng Anh:<i>&nbsp;#nhập ví dụ tiếng Việt</i></li><li>#nhập ví dụ tiếng Anh:<i>&nbsp;#nhập ví dụ tiếng Việt</i></li></ul></li><li>#nhập nghĩa<ul><li>#nhập ví dụ tiếng Anh:<i>&nbsp;#nhập ví dụ tiếng Việt</i></li></ul></li></ul><h2>#nhập loại từ</h2><ul><li>#nhập nghĩa<ul><li>#nhập ví dụ tiếng Anh:<i>&nbsp;#nhập ví dụ tiếng Việt</i></li><li>#nhập ví dụ tiếng Anh:<i>&nbsp;#nhập ví dụ tiếng Việt</i></li></ul></li><li>#nhập nghĩa<ul><li>#nhập ví dụ tiếng Anh:<i>&nbsp;#nhập ví dụ tiếng Việt</i></li></ul></li></ul></body></html>");
         } else if (clicked == reset_button1) {
-            Database_Connect.lookUpDatabase(searchBar1.getText());
+            Database_Connect.lookUpDatabase(searchBar1.getText(),true);
             modifyView.setHtmlText(Database_Connect.both);
         }
     }
@@ -252,11 +259,11 @@ public class Edit_Controller extends General_Controller {
         String input = "";
         if (clicked == search_button) {
             input = searchBar.getText();
-            Database_Connect.lookUpDatabase(input);
+            Database_Connect.lookUpDatabase(input,true);
             modifyView.setHtmlText(Database_Connect.both);
         } else if (clicked == search_button1) {
             input = searchBar1.getText();
-            Database_Connect.lookUpDatabase(input);
+            Database_Connect.lookUpDatabase(input,true);
             deleteView.setHtmlText(Database_Connect.both);
         }
     }

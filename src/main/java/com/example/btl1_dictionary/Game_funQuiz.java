@@ -66,6 +66,9 @@ public class Game_funQuiz extends Games_Controller {
     private TextField question;
 
     @FXML
+    private ImageView next_button;
+
+    @FXML
     private AnchorPane result;
 
     @FXML
@@ -169,6 +172,10 @@ public class Game_funQuiz extends Games_Controller {
         yourAnswer.clear();
         quizzes.remove(index);
         questionLeft--;
+        if (questionLeft == 1) {
+            next_button.setVisible(false);
+            nextStep.setVisible(false);
+        }
         if (questionLeft == 0) {
             nextStep.setVisible(false);
         }

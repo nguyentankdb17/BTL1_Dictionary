@@ -74,9 +74,9 @@
                </cursor></ImageView>
             <TextField fx:id="searchBar" focusTraversable="false" layoutX="115.0" layoutY="100.0" onKeyTyped="#onKeyTyped" prefHeight="52.0" prefWidth="214.0" promptText="Type the word....">
                <font>
-                  <Font name="Dubai Medium" size="20.0" />
+                  <Font name="Times New Roman" size="20.0" />
                </font></TextField>
-            <ListView fx:id="suggestion" focusTraversable="false" layoutX="115.0" layoutY="168.0" onMouseClicked="#Fill" prefHeight="470.0" prefWidth="266.0" />
+            <ListView fx:id="suggestion" focusTraversable="false" layoutX="115.0" layoutY="168.0" onMouseClicked="#Fill" prefHeight="420.0" prefWidth="272.0" />
             <WebView fx:id="meaning" blendMode="DARKEN" focusTraversable="false" layoutX="412.0" layoutY="194.0" prefHeight="446.0" prefWidth="454.0" />
             <ImageView fx:id="searchButton" fitHeight="52.0" fitWidth="42.0" layoutX="339.0" layoutY="105.0" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -92,14 +92,52 @@
                </cursor>
             </ImageView>
             <WebView fx:id="word" blendMode="MULTIPLY" focusTraversable="false" layoutX="415.0" layoutY="84.0" prefHeight="110.0" prefWidth="454.0" />
-            <ImageView fx:id="voice" fitHeight="32.0" fitWidth="42.0" layoutX="800.0" layoutY="136.0" onMouseClicked="#Voice" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="voice" fitHeight="32.0" fitWidth="42.0" layoutX="800.0" layoutY="136.0" onMouseClicked="#Voice" pickOnBounds="true" preserveRatio="true" visible="false">
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
-            <ImageView fx:id="saved" fitHeight="32.0" fitWidth="32.0" layoutX="800.0" layoutY="89.0" onMouseClicked="#Save" pickOnBounds="true" preserveRatio="true">
+               </cursor>
+               <image>
+                  <Image url="@../Image/Voice_Button.png" />
+               </image></ImageView>
+            <ImageView fx:id="saved" fitHeight="32.0" fitWidth="32.0" layoutX="707.0" layoutY="84.0" onMouseClicked="#Save" pickOnBounds="true" preserveRatio="true" visible="false">
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
+               </cursor>
+               <image>
+                  <Image url="@../Image/star_black.png" />
+               </image></ImageView>
+            <ImageView fx:id="delete" fitHeight="32.0" fitWidth="32.0" layoutX="800.0" layoutY="84.0" onMouseClicked="#Delete" pickOnBounds="true" preserveRatio="true" visible="false">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <image>
+                  <Image url="@../Image/delete_off.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="edit" fitHeight="32.0" fitWidth="32.0" layoutX="757.0" layoutY="84.0" onMouseClicked="#Edit" pickOnBounds="true" preserveRatio="true" visible="false">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <image>
+                  <Image url="@../Image/modify_off.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="en_vi" fitHeight="32.0" fitWidth="91.0" layoutX="135.0" layoutY="594.0" onMouseClicked="#switchLanguage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/en-vi-on.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="vi_en" fitHeight="32.0" fitWidth="82.0" layoutX="277.0" layoutY="594.0" onMouseClicked="#switchLanguage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/vi-en-off.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
          </children>
     </AnchorPane>
   </children>

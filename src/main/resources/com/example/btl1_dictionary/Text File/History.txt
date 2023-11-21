@@ -1,3 +1,29 @@
+ghost
+priority
+new world
+muốn
+new
+nhu cầu
+mean
+học
+learnt
+learn
+peach
+hôm kia
+le lói
+hãy
+poach
+nếu
+gotta
+new look
+khóc
+custom
+meadow
+goose
+next
+lesson
+great-eyed
+great
 mainframe
 rondo
 chicane
@@ -8,15 +34,12 @@ column separator
 add carry
 chianti
 s-bend
-peach
 sabaean
 cost
 poster
 sdi
 operation
-new
 neal
-mean
 error
 treacherous
 riconner
@@ -31,7 +54,6 @@ net
 recreate
 earn
 punish
-poach
 query
 practice
 mac
@@ -40,7 +62,6 @@ west
 buyable
 buy
 new testament
-great
 assist
 assault
 ass
@@ -71,7 +92,6 @@ net
 recreate
 earn
 punish
-poach
 query
 practice
 mac
@@ -80,7 +100,6 @@ west
 buyable
 buy
 new testament
-great
 assist
 assault
 ass
@@ -112,7 +131,6 @@ net
 recreate
 earn
 punish
-poach
 query
 practice
 mac
@@ -121,7 +139,6 @@ west
 buyable
 buy
 new testament
-great
 assist
 assault
 ass
@@ -152,7 +169,6 @@ net
 recreate
 earn
 punish
-poach
 query
 practice
 mac
@@ -161,7 +177,6 @@ west
 buyable
 buy
 new testament
-great
 assist
 assault
 ass
@@ -180,9 +195,7 @@ geometric
 dead
 preach
 nothingness
-new
 neal
-mean
 error
 treacherous
 riconner
@@ -197,7 +210,6 @@ net
 recreate
 earn
 punish
-poach
 query
 practice
 mac
@@ -206,7 +218,6 @@ west
 buyable
 buy
 new testament
-great
 assist
 assault
 ass
@@ -237,7 +248,6 @@ net
 recreate
 earn
 punish
-poach
 query
 practice
 mac
@@ -246,7 +256,6 @@ west
 buyable
 buy
 new testament
-great
 assist
 assault
 ass
@@ -278,7 +287,6 @@ net
 recreate
 earn
 punish
-poach
 query
 practice
 mac
@@ -287,15 +295,7 @@ west
 buyable
 buy
 new testament
-great
 assist
 assault
 ass
 luxury
-aimlessness
-aim
-add carry
-chianti
-s-bend
-peach
-sabaean
