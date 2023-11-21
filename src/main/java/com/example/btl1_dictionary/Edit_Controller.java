@@ -122,11 +122,20 @@ public class Edit_Controller extends General_Controller {
 
     private List<String> historyList = new ArrayList<>();
     private List<String> savedList = new ArrayList<>();
+
+    /**
+     * initialize.
+     * @throws IOException
+     */
     public void initialize() throws IOException {
         readFile(historyPath,historyList);
         readFile(savedPath,savedList);
     }
 
+    /**
+     * switch to add view.
+     * @param event mouse event
+     */
     @FXML
     void switchToAdd(MouseEvent event) {
         Add.setVisible(true);
@@ -137,6 +146,10 @@ public class Edit_Controller extends General_Controller {
         Delete_Button.setImage(delete_off);
     }
 
+    /**
+     * switch to delete view.
+     * @param event mouse event
+     */
     @FXML
     void switchToDelete(MouseEvent event) {
         Add.setVisible(false);
@@ -147,6 +160,10 @@ public class Edit_Controller extends General_Controller {
         Delete_Button.setImage(delete_on);
     }
 
+    /**
+     * switch to modify view.
+     * @param event mouse event
+     */
     @FXML
     void switchToModify(MouseEvent event) {
         Add.setVisible(false);
@@ -157,6 +174,10 @@ public class Edit_Controller extends General_Controller {
         Delete_Button.setImage(delete_off);
     }
 
+    /**
+     * add word into database.
+     * @param event mouse event
+     */
     @FXML
     void Added(MouseEvent event) throws Exception {
         String htmlText = addView.getHtmlText();
@@ -184,6 +205,10 @@ public class Edit_Controller extends General_Controller {
         alert.showAndWait();
     }
 
+    /**
+     * modify word in database.
+     * @param event mouse event
+     */
     @FXML
     void Modified(MouseEvent event) {
         String word = searchBar.getText();
@@ -204,6 +229,10 @@ public class Edit_Controller extends General_Controller {
         alert.showAndWait();
     }
 
+    /**
+     * delete word in database.
+     * @param event mouse event
+     */
     @FXML
     void Deleted(MouseEvent event) throws IOException {
         String input = searchBar1.getText();
@@ -221,7 +250,7 @@ public class Edit_Controller extends General_Controller {
             }
         });
 
-        if (userConfirmed.get()) {
+        if (userConfirmed.get() == true) {
             Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
             alert2.setTitle("Word Deleted Successfully");
             alert2.setHeaderText(null);
@@ -242,6 +271,10 @@ public class Edit_Controller extends General_Controller {
 
     }
 
+    /**
+     * reset the html editor.
+     * @param event mouse event
+     */
     @FXML
     void Reset(MouseEvent event) throws Exception {
         ImageView clicked = (ImageView) event.getSource();
@@ -253,6 +286,10 @@ public class Edit_Controller extends General_Controller {
         }
     }
 
+    /**
+     * search the word typed.
+     * @param event mouse event
+     */
     @FXML
     void Search(MouseEvent event) throws Exception {
         ImageView clicked = (ImageView) event.getSource();

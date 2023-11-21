@@ -1,0 +1,39 @@
+/* styles.css */
+.keyboard-button {
+    -fx-background-color: #4CAF50; /* Green background color */
+    -fx-text-fill: white; /* White text color */
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-padding: 5 10;
+
+    -fx-transition-duration: 1s;
+}
+
+.keyboard-button:hover {
+    -fx-background-color: #45a049; /* Darker green on hover */
+    -fx-effect: innershadow(gaussian, #a6a6a6, 10, 0, 0, 0);
+}
+
+.keyboard-button:disabled {
+    -fx-background-color: #8F8F8F; /* Set the background color for disabled buttons */
+    -fx-opacity: 1; /* Set the opacity to make the text fully visible on a disabled button */
+}
+
+#wordLabel {
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+#guessLabel {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4CAF50; /* Green text color */
+}
+
+#hangmanImageView {
+    -fx-transition-duration: 0.8s;
+}
+
+#hangmanImageView:hover {
+    -fx-effect: dropshadow(gaussian, rgba(215, 218, 184, 0.8), 30, 0, 0, 0);
+}

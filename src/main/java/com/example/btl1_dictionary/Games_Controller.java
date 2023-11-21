@@ -1,13 +1,8 @@
 package com.example.btl1_dictionary;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class Games_Controller extends General_Controller {
 
@@ -30,6 +25,10 @@ public class Games_Controller extends General_Controller {
     private ImageView back_button;
 
 
+    /**
+     * to the game chosen.
+     * @param event the mouse event
+     */
     @FXML
     void toGame(MouseEvent event) {
         ImageView clicked = (ImageView) event.getSource();
@@ -42,6 +41,10 @@ public class Games_Controller extends General_Controller {
         }
     }
 
+    /**
+     * standard the input string.
+     * @param input the input string
+     */
     public String standardized(String input) {
         input = input.trim();
         input = input.toLowerCase();
@@ -57,11 +60,19 @@ public class Games_Controller extends General_Controller {
         return input;
     }
 
+    /**
+     * back into the menu.
+     * @param event the mouse event
+     */
     @FXML
     void Back(MouseEvent event) {
         switchScene("FXML File/games.fxml",event);
     }
 
+    /**
+     * next.
+     * @param event the mouse event
+     */
     @FXML
     void Next(MouseEvent event) {
 

@@ -8,7 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-class Word extends Database_Connect {
+/**
+ * word structure.
+ */
+class Word {
     public int id;
     public String word;
     public String meaning;
@@ -33,8 +36,10 @@ class Word extends Database_Connect {
     }
 }
 
-
-class Trie extends Database_Connect {
+/**
+ * trie structure.
+ */
+class Trie {
 
     private static final ArrayList<String> searchedWords = new ArrayList<>();
     private static final TrieNode root = new TrieNode();

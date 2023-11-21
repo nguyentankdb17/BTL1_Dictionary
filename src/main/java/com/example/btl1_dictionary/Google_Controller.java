@@ -62,6 +62,12 @@ public class Google_Controller extends General_Controller {
 
     private boolean isEnglish = true;
 
+    /**
+     * connect to google translate API.
+     * @param input the input string
+     * @param languageFrom the language from
+     * @param languageTo the language to
+     */
     private static String ConnectToGGAPI( String input, String languageFrom, String languageTo) throws IOException, IOException {
         String urlSource = "https://script.google.com/macros/s/AKfycby3AOWmhe32TgV9nW-Q0TyGOEyCHQeFiIn7hRgy5m8jHPaXDl2GdToyW_3Ys5MTbK6wjg/exec"
                 + "?q=" + URLEncoder.encode(input, "UTF-8")
@@ -82,6 +88,10 @@ public class Google_Controller extends General_Controller {
         return res.toString();
     }
 
+    /**
+     * translate.
+     * @param event the mouse event
+     */
     @FXML
     void translate(MouseEvent event) throws IOException {
         String in = input.getText();
@@ -91,6 +101,10 @@ public class Google_Controller extends General_Controller {
         output.setText(res);
     }
 
+    /**
+     * play voice of the sentence.
+     * @param event the mouse event
+     */
     @FXML
     void Voice_gg(MouseEvent event) throws IOException {
         ImageView clickedImageView = (ImageView) event.getSource();
@@ -102,6 +116,10 @@ public class Google_Controller extends General_Controller {
         }
     }
 
+    /**
+     * turn speech into text (only in English).
+     * @param event the mouse event
+     */
     @FXML
     void speechToText(MouseEvent event) throws Exception {
         Thread thread = new Thread(() -> {
@@ -150,6 +168,10 @@ public class Google_Controller extends General_Controller {
         thread.start();
     }
 
+    /**
+     * handle when key pressed.
+     * @param event the key event
+     */
     @FXML
     void onKeyPressed(KeyEvent event) {
         output.clear();
@@ -159,6 +181,10 @@ public class Google_Controller extends General_Controller {
         }
     }
 
+    /**
+     * switch the language.
+     * @param event the mouse event
+     */
     @FXML
     void switchLanguage(MouseEvent event) {
         if (isEnglish) {
@@ -177,6 +203,10 @@ public class Google_Controller extends General_Controller {
         }
     }
 
+    /**
+     * clear the input text field.
+     * @param event the mouse event
+     */
     @FXML
     void Clear(MouseEvent event) {
         input.clear();
@@ -185,6 +215,10 @@ public class Google_Controller extends General_Controller {
         voice_to.setImage(null);
     }
 
+    /**
+     * upload the image and scan it into text.
+     * @param event the mouse event
+     */
     @FXML
     void UpLoadImage(MouseEvent event) {
         Ocr.setUp();

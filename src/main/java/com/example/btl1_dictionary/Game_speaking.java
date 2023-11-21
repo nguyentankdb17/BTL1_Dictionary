@@ -115,10 +115,6 @@ public class Game_speaking extends Games_Controller {
     int numberSentences = 0;
     int sentenceLeft = 0;
 
-    public void initialize() throws IOException {
-
-    }
-
     @FXML
     void speakToMic(MouseEvent event) {
         Thread thread = new Thread(() -> {

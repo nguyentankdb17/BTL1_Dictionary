@@ -6,9 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.control.TextField;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,6 +15,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+// do something
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -34,132 +34,86 @@ public class game_hangMan extends Games_Controller {
     @FXML
     private Label guessLabel;
 
-    @FXML
-    private Button buttonA;
+//
+//    @FXML
+//    private GridPane virtualKeyboardGridPane;
 
-    @FXML
-    private Button buttonB;
-
-    @FXML
-    private Button buttonC;
-
-    @FXML
-    private Button buttonD;
-
-    @FXML
-    private Button buttonE;
-
-    @FXML
-    private Button buttonF;
-
-    @FXML
-    private Button buttonG;
-
-    @FXML
-    private Button buttonH;
-
-    @FXML
-    private Button buttonI;
-
-    @FXML
-    private Button buttonJ;
-
-    @FXML
-    private Button buttonK;
-
-    @FXML
-    private Button buttonL;
-
-    @FXML
-    private Button buttonM;
-
-    @FXML
-    private Button buttonN;
-
-    @FXML
-    private Button buttonO;
-
-    @FXML
-    private Button buttonP;
-
-    @FXML
-    private Button buttonQ;
-
-    @FXML
-    private Button buttonR;
-
-    @FXML
-    private Button buttonS;
-
-    @FXML
-    private Button buttonT;
-
-    @FXML
-    private Button buttonU;
-
-    @FXML
-    private Button buttonV;
-
-    @FXML
-    private Button buttonW;
-
-    @FXML
-    private Button buttonX;
-
-    @FXML
-    private Button buttonY;
-
-    @FXML
-    private Button buttonZ;
-
-    @FXML
-    private TextField Number;
-
-    @FXML
-    private TextField Score;
+    @FXML private Button buttonA;
+    @FXML private Button buttonB;
+    @FXML private Button buttonC;
+    @FXML private Button buttonD;
+    @FXML private Button buttonE;
+    @FXML private Button buttonF;
+    @FXML private Button buttonG;
+    @FXML private Button buttonH;
+    @FXML private Button buttonI;
+    @FXML private Button buttonJ;
+    @FXML private Button buttonK;
+    @FXML private Button buttonL;
+    @FXML private Button buttonM;
+    @FXML private Button buttonN;
+    @FXML private Button buttonO;
+    @FXML private Button buttonP;
+    @FXML private Button buttonQ;
+    @FXML private Button buttonR;
+    @FXML private Button buttonS;
+    @FXML private Button buttonT;
+    @FXML private Button buttonU;
+    @FXML private Button buttonV;
+    @FXML private Button buttonW;
+    @FXML private Button buttonX;
+    @FXML private Button buttonY;
+    @FXML private Button buttonZ;
 
 
 
-
-    private List<String> words = new ArrayList<>();
-    private List<Button> buttons = new ArrayList<>();
+    private String[] words;
     private String selectedWord;
     private StringBuilder currentWord;
     private int incorrectGuessCount;
-    private static final int MAX_INCORRECT_GUESSES = 6;
+    private static final int MAX_INCORRECT_GUESSES = 6; // Set the maximum incorrect guesses allowed
 
-    int index = 0;
-    int score = 0;
-    int numberWord = 0;
+    public void initialize() {
+        loadWordsFromFile(Path.of("src/main/resources/com/example/btl1_dictionary/Text File/Saved.txt"));
+        resetGame();
 
-    int wordLeft = 0;
-    int number = 1;
+        // init keyboard element
+        initializeVirtualKeyboardButtons();
 
-    public void initialize() throws IOException {
-        readFile("src/main/resources/com/example/btl1_dictionary/Text File/Saved.txt", words);
-        numberWord = words.size();
-        wordLeft = numberWord;
-        selectRandomWord();
-        updateWordLabel();
-        resetHangmanImage();
-        resetLabels();
-        incorrectGuessCount = 0;
+    }
 
-        buttons.add(buttonA); buttons.add(buttonB); buttons.add(buttonC);
-        buttons.add(buttonD); buttons.add(buttonE); buttons.add(buttonF);
-        buttons.add(buttonG); buttons.add(buttonH); buttons.add(buttonI);
-        buttons.add(buttonJ); buttons.add(buttonK); buttons.add(buttonL);
-        buttons.add(buttonM); buttons.add(buttonN); buttons.add(buttonO);
-        buttons.add(buttonP); buttons.add(buttonQ); buttons.add(buttonR);
-        buttons.add(buttonS); buttons.add(buttonT); buttons.add(buttonU);
-        buttons.add(buttonV); buttons.add(buttonW); buttons.add(buttonX);
-        buttons.add(buttonY); buttons.add(buttonZ);
+    private void initializeVirtualKeyboardButtons() {
+        // Add an action handler for each button
+        System.out.println("Sai Gon nhu 1 giac mo dep goi moi");
+
+        // Add similar lines for other buttons
+    }
+
+    private void loadWordsFromFile(Path filePath) {
+        List<String> wordList = new ArrayList<>();
+        try (InputStream inputStream = Files.newInputStream(filePath);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                wordList.add(line.toUpperCase());
+            }
+
+            if (wordList.isEmpty()) {
+                System.err.println("No words found in the file: " + filePath.toString());
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + filePath.toString());
+            e.printStackTrace();
+        }
+
+        words = wordList.toArray(new String[0]);
     }
 
     private void selectRandomWord() {
         Random random = new Random();
-        index = random.nextInt(wordLeft);
-        selectedWord = words.get(index).toUpperCase();
+        selectedWord = words[random.nextInt(words.length)].toUpperCase();
         currentWord = new StringBuilder("_".repeat(selectedWord.length()));
     }
 
@@ -169,10 +123,73 @@ public class game_hangMan extends Games_Controller {
 
     private void resetLabels() {
         guessLabel.setText("Guess a letter:");
-        for (Button button : buttons) {
-            button.setVisible(true);
-        }
+    }
 
+    @FXML
+    private void resetGame() {
+        selectRandomWord();
+        updateWordLabel();
+        resetHangmanImage();
+        resetLabels();
+        incorrectGuessCount = 0;
+        enableAllVirtualKeyboardButtons();
+    }
+
+    private void enableAllVirtualKeyboardButtons() {
+        buttonA.setDisable(false);
+        buttonB.setDisable(false);
+        buttonC.setDisable(false);
+        buttonD.setDisable(false);
+        buttonE.setDisable(false);
+        buttonF.setDisable(false);
+        buttonG.setDisable(false);
+        buttonH.setDisable(false);
+        buttonI.setDisable(false);
+        buttonJ.setDisable(false);
+        buttonK.setDisable(false);
+        buttonL.setDisable(false);
+        buttonM.setDisable(false);
+        buttonN.setDisable(false);
+        buttonO.setDisable(false);
+        buttonP.setDisable(false);
+        buttonQ.setDisable(false);
+        buttonR.setDisable(false);
+        buttonS.setDisable(false);
+        buttonT.setDisable(false);
+        buttonU.setDisable(false);
+        buttonV.setDisable(false);
+        buttonW.setDisable(false);
+        buttonX.setDisable(false);
+        buttonY.setDisable(false);
+        buttonZ.setDisable(false);
+    }
+    private void disableAllVirtualKeyboardButtons() {
+        buttonA.setDisable(true);
+        buttonB.setDisable(true);
+        buttonC.setDisable(true);
+        buttonD.setDisable(true);
+        buttonE.setDisable(true);
+        buttonF.setDisable(true);
+        buttonG.setDisable(true);
+        buttonH.setDisable(true);
+        buttonI.setDisable(true);
+        buttonJ.setDisable(true);
+        buttonK.setDisable(true);
+        buttonL.setDisable(true);
+        buttonM.setDisable(true);
+        buttonN.setDisable(true);
+        buttonO.setDisable(true);
+        buttonP.setDisable(true);
+        buttonQ.setDisable(true);
+        buttonR.setDisable(true);
+        buttonS.setDisable(true);
+        buttonT.setDisable(true);
+        buttonU.setDisable(true);
+        buttonV.setDisable(true);
+        buttonW.setDisable(true);
+        buttonX.setDisable(true);
+        buttonY.setDisable(true);
+        buttonZ.setDisable(true);
     }
 
 
@@ -193,10 +210,12 @@ public class game_hangMan extends Games_Controller {
     @FXML
     private void handleVirtualKeyboardClick(javafx.event.ActionEvent event) {
         if (event.getSource() instanceof Button) {
-            Button button = (Button) event.getSource();
-            String letter = button.getText().toUpperCase();
-            processGuess(letter);
-            button.setVisible(false);
+            Button clickedButton = (Button) event.getSource();
+            if (!clickedButton.isDisable()) {
+                String letter = clickedButton.getText().toUpperCase();
+                processGuess(letter);
+                clickedButton.setDisable(true);
+            }
         }
     }
 
@@ -218,6 +237,7 @@ public class game_hangMan extends Games_Controller {
 
             if (currentWord.toString().equals(selectedWord)) {
                 guessLabel.setText("Congratulations! You guessed the word.");
+                disableAllVirtualKeyboardButtons();
             }
         }
     }
@@ -228,6 +248,7 @@ public class game_hangMan extends Games_Controller {
 
         if (incorrectGuessCount >= MAX_INCORRECT_GUESSES) {
             // Handle game over (e.g., display a message)
+            disableAllVirtualKeyboardButtons();
             guessLabel.setText("Game Over! The word was: " + selectedWord);
 //            disableLetterButtons(); // Disable letter buttons after the game is over
         }
@@ -238,16 +259,9 @@ public class game_hangMan extends Games_Controller {
         hangmanImageView.setImage(new Image(getClass().getResource(imagePath).toExternalForm()));
     }
 
-
-    @Override
-    void Next(MouseEvent event) {
-        words.remove(index);
-        selectRandomWord();
-        updateWordLabel();
-        resetHangmanImage();
-        resetLabels();
-        incorrectGuessCount = 0;
-        number++;
-        Number.setText(number + "/" + numberWord);
-    }
+//    private void disableLetterButtons() {
+//        // Disable all letter buttons after the game is over
+//        // You can iterate through the buttons and disable them
+//        // Example: button.setDisable(true);
+//    }
 }

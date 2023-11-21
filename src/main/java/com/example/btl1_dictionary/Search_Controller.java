@@ -96,11 +96,17 @@ public class Search_Controller extends General_Controller {
         return searchBar;
     }
 
+    /**
+     * initialize.
+     */
     public void initialize() {
-        handleFontsize(searchBar);
         Database_Connect.loadSuggestions();
     }
 
+    /**
+     * load suggestions.
+     * @param input the input string
+     */
     private void showSuggestions(String input) {
         ObservableList<String> filteredSuggestions = FXCollections.observableArrayList();
         List<String> matchingPrefixSuggestions = new ArrayList<>();
@@ -125,6 +131,9 @@ public class Search_Controller extends General_Controller {
         suggestion.setItems(filteredSuggestions);
     }
 
+    /**
+     * custom font and size of listview.
+     */
     public static class CustomListCellFactory implements Callback<ListView<String>, ListCell<String>> {
         @Override
         public ListCell<String> call(ListView<String> param) {
@@ -145,6 +154,10 @@ public class Search_Controller extends General_Controller {
     }
 
 
+    /**
+     * when on key typed.
+     * @param event the key event
+     */
     @FXML
     public void onKeyTyped(KeyEvent event) {
         String input = searchBar.getText().toLowerCase();
@@ -165,6 +178,10 @@ public class Search_Controller extends General_Controller {
         }
     }
 
+    /**
+     * search the word.
+     * @param event the mouse event
+     */
     @FXML
     void search(MouseEvent event) throws Exception {
         isSaved = false;
@@ -193,6 +210,10 @@ public class Search_Controller extends General_Controller {
         }
     }
 
+    /**
+     * handle history when searching.
+     * @param input the string input
+     */
     void handleHistory(String input) throws IOException {
         String line = "";
         readFile(historyPath,historyList);
@@ -212,6 +233,10 @@ public class Search_Controller extends General_Controller {
         writeToFile(historyPath,historyList);
     }
 
+    /**
+     * handle saved when searching.
+     * @param input the string input
+     */
     void handleSaved(String input) throws IOException {
         String line = "";
         BufferedReader br = new BufferedReader(new FileReader(savedPath));
@@ -234,6 +259,10 @@ public class Search_Controller extends General_Controller {
         }
     }
 
+    /**
+     * handle frequency when searching.
+     * @param input the string input
+     */
     void handleFrequency(String input) throws IOException {
         long currentTimeMillis = System.currentTimeMillis();
         Date currentDate = new Date(currentTimeMillis);
@@ -274,6 +303,10 @@ public class Search_Controller extends General_Controller {
         fw.close();
     }
 
+    /**
+     * Play the sound of the words.
+     * @param event the mouse event
+     */
     @FXML
     void Voice(MouseEvent event) {
         if (isEnglish) {
@@ -289,6 +322,11 @@ public class Search_Controller extends General_Controller {
         }
     }
 
+
+    /**
+     * Save the word into saved list.
+     * @param event the mouse event
+     */
     @FXML
     void Save(MouseEvent event) throws IOException {
         String input = searchBar.getText().toLowerCase();
@@ -314,6 +352,11 @@ public class Search_Controller extends General_Controller {
         }
     }
 
+
+    /**
+     * Edit the word.
+     * @param event the mouse event
+     */
     @FXML
     void Edit(MouseEvent event) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML File/edit.fxml"));
@@ -335,6 +378,11 @@ public class Search_Controller extends General_Controller {
         stage.show();
     }
 
+
+    /**
+     * Delete the word.
+     * @param event the mouse event
+     */
     @FXML
     void Delete(MouseEvent event) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML File/edit.fxml"));
@@ -351,6 +399,10 @@ public class Search_Controller extends General_Controller {
 
     }
 
+    /**
+     * Switch language.
+     * @param event the mouse event
+     */
     @FXML
     void switchLanguage(MouseEvent event) {
         ImageView clickedImage = (ImageView) event.getSource();

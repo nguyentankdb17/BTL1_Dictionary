@@ -135,6 +135,11 @@ public abstract class General_Controller {
     String savedPath = "src/main/resources/com/example/btl1_dictionary/Text File/Saved.txt";
     String dictionaryPath = "src/main/resources/com/example/btl1_dictionary/Database/dict_hh.db";
 
+    /**
+     * Read list and save into a file.
+     * @param path path of the file
+     * @param list the input list
+     */
     public void writeToFile(String path, List<String> list) throws IOException {
         FileWriter fw = new FileWriter(path);
         for (String lineToWrite : list) {
@@ -144,6 +149,11 @@ public abstract class General_Controller {
         fw.close();
     }
 
+    /**
+     * Read file and save into a list.
+     * @param path path of the file
+     * @param list the output list
+     */
     public void readFile(String path, List<String> list) throws IOException {
         String line ="";
         BufferedReader br = new BufferedReader(new FileReader(path));
@@ -157,6 +167,9 @@ public abstract class General_Controller {
         br.close();
     }
 
+    /**
+     * Play the sound of the words.
+     */
     void playSound(String in, boolean check) {
         try {
             String tmp = in.replace(" ", "%20");
@@ -192,13 +205,11 @@ public abstract class General_Controller {
         }
     }
 
-    public void handleFontsize(TextField textField) {
-        int textLength = textField.getText().length();
-        double textFieldWidth = textField.getWidth();
-        Font font = textField.getFont();
-        System.out.println(font.toString());
-    }
-
+    /**
+     * Switch scene with the fxml path.
+     * @param fxmlPath the input path
+     * @param event the mouse event
+     */
     @FXML
     public void switchScene(String fxmlPath, MouseEvent event) {
         try {
@@ -213,6 +224,10 @@ public abstract class General_Controller {
         }
     }
 
+    /**
+     * Handle switch scene with screen action.
+     * @param event the mouse event
+     */
     @FXML
     public void handleSceneSwitch(MouseEvent event) {
         ImageView clickedImageView = (ImageView) event.getSource();
@@ -232,9 +247,17 @@ public abstract class General_Controller {
         }
     }
 
+    /**
+     * When the mouse entered the field.
+     * @param event the mouse event
+     */
     @FXML
     public abstract void Entered(MouseEvent event);
 
+    /**
+     * When the mouse exited the field.
+     * @param event the mouse event
+     */
     @FXML
     public abstract void Exited(MouseEvent event);
 

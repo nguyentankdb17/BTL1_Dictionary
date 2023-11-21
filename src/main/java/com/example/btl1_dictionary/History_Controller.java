@@ -92,6 +92,9 @@ public class History_Controller extends General_Controller {
     int numberOfPages = 0;
     int currentPage = 1;
 
+    /**
+     * initialize.
+     */
     public void initialize() {
         try {
             previousButton.setVisible(false);
@@ -154,6 +157,9 @@ public class History_Controller extends General_Controller {
         }
     }
 
+    /**
+     * set the word into the text field.
+     */
     void setWord(List<String> list, int index) {
         int size = list.size();
         int tmp = 10 - (size - index);
@@ -172,6 +178,10 @@ public class History_Controller extends General_Controller {
         word10.setText(list.get(index + 9));
     }
 
+    /**
+     * handle the text field when mouse entered.
+     * @param event the mouse event
+     */
     @FXML
     void entered(MouseEvent event) {
         TextField entered = (TextField) event.getSource();
@@ -199,6 +209,10 @@ public class History_Controller extends General_Controller {
         }
     }
 
+    /**
+     * handle the text field when mouse clicked.
+     * @param event the mouse event
+     */
     @FXML
     void attempted(MouseEvent event) throws Exception {
         TextField attempted = (TextField) event.getSource();
@@ -239,6 +253,10 @@ public class History_Controller extends General_Controller {
         }
     }
 
+    /**
+     * handle the text field when mouse exited.
+     * @param event the mouse event
+     */
     @FXML
     void exited(MouseEvent event) {
         TextField exited = (TextField) event.getSource();
@@ -266,6 +284,10 @@ public class History_Controller extends General_Controller {
         }
     }
 
+    /**
+     * handle the text field when click the removed button.
+     * @param event the mouse event
+     */
     @FXML
     void removed(MouseEvent event) throws Exception {
         ImageView removed = (ImageView) event.getSource();
@@ -297,6 +319,9 @@ public class History_Controller extends General_Controller {
         setWord(wordList,(currentPage - 1) * 10);
     }
 
+    /**
+     * next page.
+     */
     @FXML
     void next(MouseEvent event) {
         previousButton.setVisible(true);
@@ -309,6 +334,9 @@ public class History_Controller extends General_Controller {
         }
     }
 
+    /**
+     * previous page.
+     */
     @FXML
     void previous(MouseEvent event) {
         nextButton.setVisible(true);
