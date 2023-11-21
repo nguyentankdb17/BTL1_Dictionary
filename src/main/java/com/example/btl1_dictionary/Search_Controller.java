@@ -80,7 +80,9 @@ public class Search_Controller extends General_Controller {
     @FXML
     private ListView<String> suggestion;
 
-    private List<String> wordList = new ArrayList<String>();
+    private List<String> suggestionEng = new ArrayList<String>();
+
+    private List<String> suggestionVie = new ArrayList<String>();
 
     @FXML
     private ImageView searchButton;
@@ -101,22 +103,33 @@ public class Search_Controller extends General_Controller {
      */
     public void initialize() {
         Database_Connect.loadSuggestions();
+        Database_Connect.loadSuggestionsViet();
     }
 
     /**
      * load suggestions.
      * @param input the input string
      */
-    private void showSuggestions(String input) {
+    private void showSuggestions(String input, boolean isEnglish) {
         ObservableList<String> filteredSuggestions = FXCollections.observableArrayList();
         List<String> matchingPrefixSuggestions = new ArrayList<>();
         List<String> nonMatchingSuggestions = new ArrayList();
 
-        for (String suggestion : wordList) {
-            if (suggestion.toLowerCase().startsWith(input.toLowerCase())) {
-                matchingPrefixSuggestions.add(suggestion);
-            } else if (suggestion.toLowerCase().contains(input.toLowerCase())) {
-                nonMatchingSuggestions.add(suggestion);
+        if (isEnglish) {
+            for (String suggestion : suggestionEng) {
+                if (suggestion.toLowerCase().startsWith(input.toLowerCase())) {
+                    matchingPrefixSuggestions.add(suggestion);
+                } else if (suggestion.toLowerCase().contains(input.toLowerCase())) {
+                    nonMatchingSuggestions.add(suggestion);
+                }
+            }
+        } else {
+            for (String suggestion : suggestionVie) {
+                if (suggestion.toLowerCase().startsWith(input.toLowerCase())) {
+                    matchingPrefixSuggestions.add(suggestion);
+                } else if (suggestion.toLowerCase().contains(input.toLowerCase())) {
+                    nonMatchingSuggestions.add(suggestion);
+                }
             }
         }
 
@@ -165,16 +178,21 @@ public class Search_Controller extends General_Controller {
 
         Database_Connect.createSuggestions(input);
 
-        wordList = Database_Connect.suggestions;
-        suggestion.setItems(FXCollections.observableArrayList(wordList));
+        suggestionEng = Database_Connect.suggestions;
+        suggestionVie = Database_Connect.suggestionsVie;
+        if (isEnglish) {
+            suggestion.setItems(FXCollections.observableArrayList(suggestionEng));
+        } else {
+            suggestion.setItems(FXCollections.observableArrayList(suggestionVie));
+        }
 
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
-            showSuggestions(newValue);
+            showSuggestions(newValue, isEnglish);
         });
 
         if (event.getCode() == KeyCode.BACK_SPACE || event.getCode() == KeyCode.DELETE) {
             String currentValue = searchBar.getText();
-            showSuggestions(currentValue);
+            showSuggestions(currentValue, isEnglish);
         }
     }
 

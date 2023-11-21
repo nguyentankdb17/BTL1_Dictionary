@@ -38,56 +38,55 @@ public class Start_Application extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-//        try {
-//            captcha = new Captcha.Builder(200, 50)
-//                    .addText()
-//                    .addBackground(new GradiatedBackgroundProducer())
-//                    .gimp(new FishEyeGimpyRenderer())
-//                    .addBorder()
-//                    .build();
-//
-//            Label captchaLabel = new Label("COMPLETE THIS CAPTCHA:");
-//            Font font = new Font("Segoe UI Black",20);
-//            captchaLabel.setFont(font);
-//            captchaImageView = new ImageView(convertToJavaFXImage(captcha.getImage()));
-//            Button resetButton = new Button("Reset");
-//            resetButton.setOnAction(e -> resetCaptcha());
-//            captchaInput = new TextField();
-//            captchaInput.setMaxWidth(300);
-//
-//            Button submitButton = new Button("SUBMIT");
-//            submitButton.setOnAction(e -> {
-//                try {
-//                    verifyCaptcha(stage);
-//                } catch (IOException ex) {
-//                    throw new RuntimeException(ex);
-//                }
-//            });
-//
-//
-//            VBox captchaControls = new VBox(10);
-//            captchaControls.getChildren().addAll(captchaImageView, resetButton);
-//            captchaControls.setAlignment(Pos.CENTER);
-//
-//            VBox captchaLayout = new VBox(10);
-//            captchaLayout.getChildren().addAll(captchaLabel, captchaControls, captchaInput, submitButton);
-//            captchaLayout.setAlignment(Pos.CENTER);
-//
-//            BorderPane root = new BorderPane();
-//            root.setBackground(background);
-//            root.setRight(captchaLayout);
-//
-//
-//            Scene scene = new Scene(root, 875, 650);
-//
-//
-//            stage.setTitle("DICTIONARY");
-//            stage.setScene(scene);
-//            stage.show();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-        switchToMain(stage);
+        try {
+            captcha = new Captcha.Builder(200, 50)
+                    .addText()
+                    .addBackground(new GradiatedBackgroundProducer())
+                    .gimp(new FishEyeGimpyRenderer())
+                    .addBorder()
+                    .build();
+
+            Label captchaLabel = new Label("COMPLETE THIS CAPTCHA:");
+            Font font = new Font("Segoe UI Black",20);
+            captchaLabel.setFont(font);
+            captchaImageView = new ImageView(convertToJavaFXImage(captcha.getImage()));
+            Button resetButton = new Button("Reset");
+            resetButton.setOnAction(e -> resetCaptcha());
+            captchaInput = new TextField();
+            captchaInput.setMaxWidth(300);
+
+            Button submitButton = new Button("SUBMIT");
+            submitButton.setOnAction(e -> {
+                try {
+                    verifyCaptcha(stage);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+
+
+            VBox captchaControls = new VBox(10);
+            captchaControls.getChildren().addAll(captchaImageView, resetButton);
+            captchaControls.setAlignment(Pos.CENTER);
+
+            VBox captchaLayout = new VBox(10);
+            captchaLayout.getChildren().addAll(captchaLabel, captchaControls, captchaInput, submitButton);
+            captchaLayout.setAlignment(Pos.CENTER);
+
+            BorderPane root = new BorderPane();
+            root.setBackground(background);
+            root.setRight(captchaLayout);
+
+
+            Scene scene = new Scene(root, 875, 650);
+
+
+            stage.setTitle("DICTIONARY");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

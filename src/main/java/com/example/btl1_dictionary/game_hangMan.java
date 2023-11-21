@@ -4,8 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import java.io.BufferedReader;
@@ -33,6 +35,25 @@ public class game_hangMan extends Games_Controller {
 
     @FXML
     private Label guessLabel;
+
+    @FXML
+    private TextField Number;
+
+    @FXML
+    private TextField Score;
+
+    @FXML
+    private TextField nextStep;
+
+    @FXML
+    private ImageView next_button;
+
+    int index = 0;
+    int score = 0;
+    int numberWord = 0;
+
+    int wordLeft = 0;
+    int number = 1;
 
 //
 //    @FXML
@@ -67,7 +88,7 @@ public class game_hangMan extends Games_Controller {
 
 
 
-    private String[] words;
+    private List<String> words;
     private String selectedWord;
     private StringBuilder currentWord;
     private int incorrectGuessCount;
@@ -75,6 +96,8 @@ public class game_hangMan extends Games_Controller {
 
     public void initialize() {
         loadWordsFromFile(Path.of("src/main/resources/com/example/btl1_dictionary/Text File/Saved.txt"));
+        numberWord = words.size();
+        wordLeft = numberWord;
         resetGame();
 
         // init keyboard element
@@ -84,7 +107,6 @@ public class game_hangMan extends Games_Controller {
 
     private void initializeVirtualKeyboardButtons() {
         // Add an action handler for each button
-        System.out.println("Sai Gon nhu 1 giac mo dep goi moi");
 
         // Add similar lines for other buttons
     }
@@ -108,12 +130,12 @@ public class game_hangMan extends Games_Controller {
             e.printStackTrace();
         }
 
-        words = wordList.toArray(new String[0]);
+        words = wordList;
     }
 
     private void selectRandomWord() {
         Random random = new Random();
-        selectedWord = words[random.nextInt(words.length)].toUpperCase();
+        selectedWord = words.get(index).toUpperCase();
         currentWord = new StringBuilder("_".repeat(selectedWord.length()));
     }
 
@@ -236,6 +258,8 @@ public class game_hangMan extends Games_Controller {
             updateWordLabel();
 
             if (currentWord.toString().equals(selectedWord)) {
+                score += 10;
+                Score.setText(String.valueOf(score));
                 guessLabel.setText("Congratulations! You guessed the word.");
                 disableAllVirtualKeyboardButtons();
             }
@@ -264,4 +288,20 @@ public class game_hangMan extends Games_Controller {
 //        // You can iterate through the buttons and disable them
 //        // Example: button.setDisable(true);
 //    }
+    @Override
+    void Next(MouseEvent event) {
+        words.remove(index);
+        wordLeft--;
+        if (wordLeft == 1) {
+            next_button.setVisible(false);
+            nextStep.setVisible(false);
+        }
+        if (wordLeft == 0) {
+            nextStep.setVisible(false);
+        }
+        number++;
+        Number.setText(number + "/" + numberWord);
+
+        resetGame();
+    }
 }

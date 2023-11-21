@@ -130,7 +130,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </HTMLEditor>
-                  <ImageView fx:id="add_button" fitHeight="53.0" fitWidth="53.0" layoutX="612.0" layoutY="266.0" onMouseClicked="#Added" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="add_button" fitHeight="53.0" fitWidth="53.0" layoutX="612.0" layoutY="185.0" onMouseClicked="#Added" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Image/add.png" />
                      </image>
@@ -138,23 +138,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="Guide_Button" fitHeight="68.0" fitWidth="53.0" layoutX="606.0" layoutY="73.0" onMouseClicked="#Guide" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Image/howToUse.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="567.0" layoutY="29.0" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: transparent;" text="HƯỚNG DẪN">
-                     <font>
-                        <Font name="Segoe UI Black" size="15.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                  </TextField>
-                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="567.0" layoutY="223.0" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: transparent;" text="THÊM">
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="573.0" layoutY="126.0" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: transparent;" text="THÊM">
                      <font>
                         <Font name="Segoe UI Black" size="15.0" />
                      </font>
@@ -179,7 +163,7 @@
                         <Font name="Segoe UI Emoji" size="15.0" />
                      </font>
                   </TextField>
-                  <ImageView fx:id="saved_button" fitHeight="53.0" fitWidth="53.0" layoutX="598.0" layoutY="272.0" onMouseClicked="#Modified" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="saved_button" fitHeight="53.0" fitWidth="53.0" layoutX="598.0" layoutY="192.0" onMouseClicked="#Modified" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Image/saved.png" />
                      </image>
@@ -187,7 +171,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="559.0" layoutY="217.0" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: transparent;" text="LƯU THAY ĐỔI">
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="559.0" layoutY="140.0" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: transparent;" text="LƯU THAY ĐỔI">
                      <font>
                         <Font name="Segoe UI Black" size="15.0" />
                      </font>
@@ -195,22 +179,6 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </TextField>
-                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="559.0" layoutY="48.0" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: transparent;" text="HƯỚNG DẪN">
-                     <font>
-                        <Font name="Segoe UI Black" size="15.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                  </TextField>
-                  <ImageView fx:id="Guide_Button1" fitHeight="68.0" fitWidth="53.0" layoutX="598.0" layoutY="91.0" onMouseClicked="#Guide" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Image/howToUse.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
                   <HTMLEditor fx:id="modifyView" focusTraversable="false" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="14.0" layoutY="40.0" prefHeight="330.0" prefWidth="514.0" />
                   <ImageView fx:id="search_button" fitHeight="34.0" fitWidth="36.0" layoutX="191.0" layoutY="6.0" onMouseClicked="#Search" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -237,7 +205,7 @@
                         <Font name="Segoe UI Emoji" size="15.0" />
                      </font>
                   </TextField>
-                  <ImageView fx:id="delete_button" fitHeight="53.0" fitWidth="53.0" layoutX="598.0" layoutY="272.0" onMouseClicked="#Deleted" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="delete_button" fitHeight="53.0" fitWidth="53.0" layoutX="598.0" layoutY="205.0" onMouseClicked="#Deleted" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Image/delete.png" />
                      </image>
@@ -245,7 +213,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="559.0" layoutY="228.0" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: transparent;" text="XÓA">
+                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="559.0" layoutY="145.0" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: transparent;" text="XÓA">
                      <font>
                         <Font name="Segoe UI Black" size="15.0" />
                      </font>
@@ -253,22 +221,6 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </TextField>
-                  <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="559.0" layoutY="48.0" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: transparent;" text="HƯỚNG DẪN">
-                     <font>
-                        <Font name="Segoe UI Black" size="15.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                  </TextField>
-                  <ImageView fx:id="Guide_Button2" fitHeight="68.0" fitWidth="53.0" layoutX="598.0" layoutY="91.0" onMouseClicked="#Guide" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Image/howToUse.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
                   <HTMLEditor fx:id="deleteView" focusTraversable="false" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="14.0" layoutY="40.0" prefHeight="330.0" prefWidth="514.0" />
                   <ImageView fx:id="search_button1" fitHeight="34.0" fitWidth="36.0" layoutX="191.0" layoutY="6.0" onMouseClicked="#Search" pickOnBounds="true" preserveRatio="true">
                      <image>

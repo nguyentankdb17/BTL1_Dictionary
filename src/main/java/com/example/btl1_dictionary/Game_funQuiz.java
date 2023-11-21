@@ -151,7 +151,7 @@ public class Game_funQuiz extends Games_Controller {
             score += 10;
             Score.setText(String.valueOf(score));
             nextStep.setText("NEXT");
-            status.setImage(correct_answer);
+            status.setImage(quizzes.get(index).image);
             showResult.setImage(show_explanation);
             check.setImage(congrat);
         } else {

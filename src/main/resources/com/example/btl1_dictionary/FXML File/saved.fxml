@@ -83,7 +83,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </TextField>
-            <TextField fx:id="wordOTD" alignment="CENTER" blendMode="DARKEN" editable="false" focusTraversable="false" layoutX="608.0" layoutY="332.0" onMouseClicked="#attempted" onMouseEntered="#entered" onMouseExited="#exited" prefHeight="43.0" prefWidth="117.0">
+            <TextField fx:id="wordOTD" alignment="CENTER" blendMode="DARKEN" editable="false" focusTraversable="false" layoutX="556.0" layoutY="387.0" onMouseClicked="#attempted" onMouseEntered="#entered" onMouseExited="#exited" prefHeight="43.0" prefWidth="211.0">
                <font>
                   <Font name="Segoe UI Emoji" size="20.0" />
                </font>
