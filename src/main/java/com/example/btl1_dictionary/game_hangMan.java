@@ -1,234 +1,253 @@
 package com.example.btl1_dictionary;
 
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+import javafx.scene.layout.GridPane;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class game_hangMan extends Games_Controller {
-    private static final String wordsListPath = "src/main/resources/com/example/btl1_dictionary/Text File/Saved.txt";
 
     @FXML
-    private Text hangmanTextArea;
+    private ImageView hangmanImageView;
 
     @FXML
-    private TextField guess;
+    private Label wordLabel;
 
     @FXML
-    private Text textForWord;
+    private Label guessLabel;
 
     @FXML
-    private Text endOfGameText;
+    private Button buttonA;
 
-    private String word;
+    @FXML
+    private Button buttonB;
 
-    private StringBuilder secretWord = new StringBuilder();
+    @FXML
+    private Button buttonC;
 
-    private int livesPos = 0;
+    @FXML
+    private Button buttonD;
 
-    ArrayList<String> hangManLives = new ArrayList<>(Arrays.asList(
-            """
-            +---+
-            |   |
-                |
-                |
-                |
-                |
-          ========""",
-            """
-            +---+
-            |   |
-            O   |
-                |
-                |
-                |
-          ========""",
-            """
-            +---+
-            |   |
-            O   |
-            |   |
-                |
-                |
-          ========""",
-            """
-            +---+
-            |   |
-            O   |
-           /|   |
-                |
-                |
-          ========""",
-            """
-            +---+
-            |   |
-            O   |
-           /|\\  |
-                |
-                |
-          ========""",
-            """
-            +---+
-            |   |
-            O   |
-           /|\\  |
-           /    |
-                |
-          ========""",
-            """
-            +---+
-            |   |
-            O   |
-           /|\\  |
-           / \\  |
-                |
-          ========"""
-    ));
+    @FXML
+    private Button buttonE;
 
-    private static String randomWord(String filePath) {
-        List<String> wordsList = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                wordsList.add(line.trim());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    @FXML
+    private Button buttonF;
+
+    @FXML
+    private Button buttonG;
+
+    @FXML
+    private Button buttonH;
+
+    @FXML
+    private Button buttonI;
+
+    @FXML
+    private Button buttonJ;
+
+    @FXML
+    private Button buttonK;
+
+    @FXML
+    private Button buttonL;
+
+    @FXML
+    private Button buttonM;
+
+    @FXML
+    private Button buttonN;
+
+    @FXML
+    private Button buttonO;
+
+    @FXML
+    private Button buttonP;
+
+    @FXML
+    private Button buttonQ;
+
+    @FXML
+    private Button buttonR;
+
+    @FXML
+    private Button buttonS;
+
+    @FXML
+    private Button buttonT;
+
+    @FXML
+    private Button buttonU;
+
+    @FXML
+    private Button buttonV;
+
+    @FXML
+    private Button buttonW;
+
+    @FXML
+    private Button buttonX;
+
+    @FXML
+    private Button buttonY;
+
+    @FXML
+    private Button buttonZ;
+
+    @FXML
+    private TextField Number;
+
+    @FXML
+    private TextField Score;
+
+
+
+
+    private List<String> words = new ArrayList<>();
+    private List<Button> buttons = new ArrayList<>();
+    private String selectedWord;
+    private StringBuilder currentWord;
+    private int incorrectGuessCount;
+    private static final int MAX_INCORRECT_GUESSES = 6;
+
+    int index = 0;
+    int score = 0;
+    int numberWord = 0;
+
+    int wordLeft = 0;
+    int number = 1;
+
+    public void initialize() throws IOException {
+        readFile("src/main/resources/com/example/btl1_dictionary/Text File/Saved.txt", words);
+        numberWord = words.size();
+        wordLeft = numberWord;
+        selectRandomWord();
+        updateWordLabel();
+        resetHangmanImage();
+        resetLabels();
+        incorrectGuessCount = 0;
+
+        buttons.add(buttonA); buttons.add(buttonB); buttons.add(buttonC);
+        buttons.add(buttonD); buttons.add(buttonE); buttons.add(buttonF);
+        buttons.add(buttonG); buttons.add(buttonH); buttons.add(buttonI);
+        buttons.add(buttonJ); buttons.add(buttonK); buttons.add(buttonL);
+        buttons.add(buttonM); buttons.add(buttonN); buttons.add(buttonO);
+        buttons.add(buttonP); buttons.add(buttonQ); buttons.add(buttonR);
+        buttons.add(buttonS); buttons.add(buttonT); buttons.add(buttonU);
+        buttons.add(buttonV); buttons.add(buttonW); buttons.add(buttonX);
+        buttons.add(buttonY); buttons.add(buttonZ);
+    }
+
+    private void selectRandomWord() {
+        Random random = new Random();
+        index = random.nextInt(wordLeft);
+        selectedWord = words.get(index).toUpperCase();
+        currentWord = new StringBuilder("_".repeat(selectedWord.length()));
+    }
+
+    private void updateWordLabel() {
+        wordLabel.setText(currentWord.toString());
+    }
+
+    private void resetLabels() {
+        guessLabel.setText("Guess a letter:");
+        for (Button button : buttons) {
+            button.setVisible(true);
         }
 
-        if (wordsList.isEmpty()) {
-            System.out.println("Words List is null");
-            return null;
-        } else {
-            Random random = new Random();
-            int randomIndex = random.nextInt(wordsList.size());
-            return wordsList.get(randomIndex);
-        }
     }
 
-    public void initialize() {
-        word = randomWord(wordsListPath);
-        livesPos = 0;
-        setupWord();
+
+    private void resetHangmanImage() {
+        hangmanImageView.setImage(new Image(getClass().getResource("/com/example/btl1_dictionary/Image/hangman/hangman0.png").toExternalForm()));
+    }
+
+
+    @FXML
+    private void handleGuess(javafx.event.ActionEvent event) {
+        if (event.getSource() instanceof Button) {
+            Button button = (Button) event.getSource();
+            String letter = button.getText().toUpperCase();
+            processGuess(letter);
+        }
     }
 
     @FXML
-    void getTextInput(ActionEvent event) {
-        playTurn();
-    }
-
-    public void setupWord(){
-        secretWord = new StringBuilder();
-        hangmanTextArea.setText(hangManLives.get(livesPos));
-        int wordLength = word.length();
-        secretWord.append("-".repeat(wordLength));
-        textForWord.setText(String.valueOf(secretWord));
-    }
-
-    private boolean checking_status() {
-        if (word.contentEquals(secretWord)) {
-            return true;
-        } else if (livesPos == 6) {
-            return true;
+    private void handleVirtualKeyboardClick(javafx.event.ActionEvent event) {
+        if (event.getSource() instanceof Button) {
+            Button button = (Button) event.getSource();
+            String letter = button.getText().toUpperCase();
+            processGuess(letter);
+            button.setVisible(false);
         }
-        return false;
     }
 
-    public void playTurn(){
-        String guess = this.guess.getText();
-        ArrayList<Integer> positions = new ArrayList<>();
-        char[] wordChars = word.toCharArray();
-        char letterGuess = guess.charAt(0);
-
-        if(checking_status()){
-            System.out.println("you won");
-            endOfGameText.setText("you won");
-            return;
-        }
-
-        if(word.contains(guess)){
-            for (int i = 0; i < word.length(); i++) {
-                if(wordChars[i] == letterGuess){
-                    positions.add(i);
+    private void processGuess(String letter) {
+        if (!currentWord.toString().contains(letter)) {
+            boolean correctGuess = false;
+            for (int i = 0; i < selectedWord.length(); i++) {
+                if (selectedWord.charAt(i) == letter.charAt(0)) {
+                    currentWord.setCharAt(i, letter.charAt(0));
+                    correctGuess = true;
                 }
             }
-            positions.forEach(pos ->{
-                secretWord.setCharAt(pos,letterGuess);
-            });
 
-            textForWord.setText(String.valueOf(secretWord));
-        } else {
-            hangmanTextArea.setText(hangManLives.get(++livesPos));
-            if(checking_status()){
-                System.out.println("you lost");
-                endOfGameText.setText("you lost. the correct word is: " + this.word);
+            if (!correctGuess) {
+                handleIncorrectGuess();
+            }
+
+            updateWordLabel();
+
+            if (currentWord.toString().equals(selectedWord)) {
+                guessLabel.setText("Congratulations! You guessed the word.");
             }
         }
     }
 
-    @FXML
-    void reset(ActionEvent event) {
-        word = randomWord(wordsListPath);
-        setupWord();
-        livesPos = 0;
-        hangmanTextArea.setText(hangManLives.get(livesPos));
-        endOfGameText.setText("");
-    }
+    private void handleIncorrectGuess() {
+        incorrectGuessCount++;
+        updateHangmanImage();
 
-
-    // đừng nói về hôm nay, đừng nói về sau này
-    // khi lang thang ở góc công viên anh thấy bàn tay em là chất thôi miên
-    // và anh có, 14 nghìn trong tay, là có đủ không đây
-
-    @Override
-    public void Entered(MouseEvent event) {
-        ImageView enteredImageView = (ImageView) event.getSource();
-
-        if (enteredImageView == getSearch_Button()) {
-            setSearch_Button(Search_Image);
-            setGame_Button(null);
-        } else if (enteredImageView == getHistory_Button()) {
-            setHistory_Button(History_Image);
-            setGame_Button(null);
-        } else if (enteredImageView == getEdit_Button()) {
-            setEdit_Button(Edit_Image);
-            setGame_Button(null);
-        } else if (enteredImageView == getGoogle_Button()) {
-            setGoogle_Button(Google_Image);
-            setGame_Button(null);
-        } else if (enteredImageView == getSaved_Button()) {
-            setSaved_Button(Saved_Image);
-            setGame_Button(null);
+        if (incorrectGuessCount >= MAX_INCORRECT_GUESSES) {
+            // Handle game over (e.g., display a message)
+            guessLabel.setText("Game Over! The word was: " + selectedWord);
+//            disableLetterButtons(); // Disable letter buttons after the game is over
         }
     }
 
-    @Override
-    public void Exited(MouseEvent event) {
-        ImageView exitedImageView = (ImageView) event.getSource();
+    private void updateHangmanImage() {
+        String imagePath = "/com/example/btl1_dictionary/Image/hangman/" + "hangman" + incorrectGuessCount + ".png";
+        hangmanImageView.setImage(new Image(getClass().getResource(imagePath).toExternalForm()));
+    }
 
-        if (exitedImageView == getSearch_Button()) {
-            setSearch_Button(null);
-            setGame_Button(Game_Image);
-        } else if (exitedImageView == getHistory_Button()) {
-            setHistory_Button(null);
-            setGame_Button(Game_Image);
-        } else if (exitedImageView == getEdit_Button()) {
-            setEdit_Button(null);
-            setGame_Button(Game_Image);
-        } else if (exitedImageView == getGoogle_Button()) {
-            setGoogle_Button(null);
-            setGame_Button(Game_Image);
-        } else if (exitedImageView == getSaved_Button()) {
-            setSaved_Button(null);
-            setGame_Button(Game_Image);
-        }
+
+    @Override
+    void Next(MouseEvent event) {
+        words.remove(index);
+        selectRandomWord();
+        updateWordLabel();
+        resetHangmanImage();
+        resetLabels();
+        incorrectGuessCount = 0;
+        number++;
+        Number.setText(number + "/" + numberWord);
     }
 }

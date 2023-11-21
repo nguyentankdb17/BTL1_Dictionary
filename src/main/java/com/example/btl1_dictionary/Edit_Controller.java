@@ -91,10 +91,10 @@ public class Edit_Controller extends General_Controller {
     public TextField searchBar1;
 
     @FXML
-    private ImageView search_button;
+    public ImageView search_button;
 
     @FXML
-    private ImageView search_button1;
+    public ImageView search_button1;
 
     @FXML
     private ImageView reset_button;

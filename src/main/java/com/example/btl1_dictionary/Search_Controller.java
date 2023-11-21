@@ -2,6 +2,7 @@ package com.example.btl1_dictionary;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -319,7 +320,13 @@ public class Search_Controller extends General_Controller {
         Parent fxmlLoader = loader.load();
         ((Edit_Controller) loader.getController()).switchToModify(event);
         ((Edit_Controller) loader.getController()).searchBar.setText(searchBar.getText());
-        ((Edit_Controller) loader.getController()).Search(event);
+        ((Edit_Controller) loader.getController()).search_button.setOnMouseClicked(e -> {
+            try {
+                ((Edit_Controller) loader.getController()).Search(e);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader, 875, 650);
@@ -332,7 +339,7 @@ public class Search_Controller extends General_Controller {
     void Delete(MouseEvent event) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML File/edit.fxml"));
         Parent fxmlLoader = loader.load();
-        ((Edit_Controller) loader.getController()).switchToModify(event);
+        ((Edit_Controller) loader.getController()).switchToDelete(event);
         ((Edit_Controller) loader.getController()).searchBar1.setText(searchBar.getText());
         ((Edit_Controller) loader.getController()).Search(event);
 

@@ -1,10 +1,12 @@
+mean
+least
+ma cà rồng
 ghost
 priority
 new world
 muốn
 new
 nhu cầu
-mean
 học
 learnt
 learn
@@ -295,7 +297,3 @@ west
 buyable
 buy
 new testament
-assist
-assault
-ass
-luxury

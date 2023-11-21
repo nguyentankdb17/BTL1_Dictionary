@@ -32,19 +32,21 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox fx:id="Main_Box" prefHeight="650.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl1_dictionary.game_hangMan">
+<VBox fx:id="Main_Box" prefHeight="650.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl1_dictionary.game_hangMan">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-
          <children>
-            <Label layoutX="85.0" layoutY="74.0" text="Type word here" />
-            <ImageView fx:id="Background" fitHeight="650.0" fitWidth="875.0" layoutY="0.0" onMouseClicked="#handleSceneSwitch" onMouseEntered="#Entered" onMouseExited="#Exited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Background" fitHeight="650.0" fitWidth="875.0" onMouseClicked="#handleSceneSwitch" onMouseEntered="#Entered" onMouseExited="#Exited" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Image/main.png" />
                </image>
@@ -73,23 +75,224 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <TextField fx:id="guess" layoutX="558.0" layoutY="277.0" prefHeight="47.0" prefWidth="110.0" />
-            <Text layoutX="558.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guess here !" />
-            <Button layoutX="677.0" layoutY="288.0" mnemonicParsing="false" onAction="#getTextInput" text="Enter" />
-            <Text fx:id="hangmanTextArea" layoutX="222.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <ImageView fitHeight="111.0" fitWidth="255.0" layoutX="357.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/hangman/hangman_banner.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="next_button" fitHeight="52.0" fitWidth="44.0" layoutX="782.0" layoutY="115.0" onMouseClicked="#Next" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/funQuiz/next-button.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="44.0" fitWidth="126.0" layoutX="178.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/funQuiz/score-button.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="Score" alignment="CENTER" focusTraversable="false" layoutX="178.0" layoutY="128.0" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: transparent;" text="0">
                <font>
-                  <Font name="Monospaced Regular" size="32.0" />
-               </font></Text>
-            <Text fx:id="endOfGameText" layoutX="577.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fx:id="textForWord" layoutX="229.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
-               <font>
-                  <Font size="40.0" />
+                  <Font name="Segoe UI Black" size="30.0" />
                </font>
-            </Text>
-            <Button layoutX="775.0" layoutY="597.0" mnemonicParsing="false" onAction="#reset" text="New word" />
-
+            </TextField>
+            <TextField fx:id="nextStep" alignment="CENTER" editable="false" focusTraversable="false" layoutX="762.0" layoutY="84.0" prefHeight="31.0" prefWidth="83.0" style="-fx-background-color: transparent;" text="NEXT">
+               <font>
+                  <Font name="Segoe UI Black" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TextField>
+            <ImageView fx:id="back_button" fitHeight="43.0" fitWidth="55.0" layoutX="128.0" layoutY="582.0" onMouseClicked="#Back" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/funQuiz/back_button.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="168.0" layoutY="588.0" prefHeight="31.0" prefWidth="142.0" style="-fx-background-color: transparent;" text="BACK TO MENU">
+               <font>
+                  <Font name="Segoe UI Black" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TextField>
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="648.0" layoutY="84.0" prefHeight="31.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="WORD">
+               <font>
+                  <Font name="Segoe UI Black" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="Number" alignment="CENTER" focusTraversable="false" layoutX="644.0" layoutY="111.0" prefHeight="52.0" prefWidth="103.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font name="Segoe UI Black" size="25.0" />
+               </font>
+            </TextField>
+            <ImageView fx:id="hangmanImageView" fitHeight="202.0" fitWidth="238.0" layoutX="165.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/hangman/hangman0.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="485.0" layoutY="398.0" prefHeight="154.0" prefWidth="261.0">
+               <children>
+                  <Button fx:id="buttonA" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="A">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonB" layoutX="47.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="B">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonC" layoutX="80.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="31.0" text="C">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonD" layoutX="113.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="D">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonE" layoutX="146.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="E">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonF" layoutX="175.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="F">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonH" layoutX="14.0" layoutY="45.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="H">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonI" layoutX="47.0" layoutY="45.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="31.0" text="I">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonJ" layoutX="80.0" layoutY="45.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="30.0" text="J">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonK" layoutX="112.0" layoutY="45.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="31.0" text="K">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonL" layoutX="146.0" layoutY="45.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="L">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonM" layoutX="175.0" layoutY="45.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="30.0" text="M">
+                     <font>
+                        <Font name="Segoe UI Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonO" layoutX="14.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="O">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonP" layoutX="47.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="P">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonQ" layoutX="80.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="Q">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonR" layoutX="113.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="R">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonS" layoutX="146.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="S">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonT" layoutX="175.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="T">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonG" layoutX="205.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="G">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonN" layoutX="204.0" layoutY="45.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="N">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonU" layoutX="205.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="U">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonV" layoutX="47.0" layoutY="109.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="V">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonW" layoutX="81.0" layoutY="109.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="30.0" text="W">
+                     <font>
+                        <Font name="Segoe UI Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonX" layoutX="113.0" layoutY="109.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="X">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonY" layoutX="145.0" layoutY="109.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="Y">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonZ" layoutX="174.0" layoutY="109.0" mnemonicParsing="false" onAction="#handleVirtualKeyboardClick" prefHeight="31.0" prefWidth="28.0" text="Z">
+                     <font>
+                        <Font name="Segoe UI Black" size="15.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="43.0" fitWidth="44.0" layoutX="263.0" layoutY="45.0" onMouseClicked="#resetGame" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/reset.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Label fx:id="guessLabel" alignment="CENTER" layoutX="415.0" layoutY="366.0" prefHeight="19.0" prefWidth="366.0" text="Guess a Letter" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="wordLabel" alignment="CENTER" layoutX="421.0" layoutY="325.0" prefHeight="30.0" prefWidth="354.0" text="wordLabel" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI Emoji" size="20.0" />
+               </font>
+            </Label>
          </children>
     </AnchorPane>
   </children>
-
 </VBox>
