@@ -32,9 +32,9 @@ Team5:
     - Delete words.
     - Google Translate translate sentences.
     - ![](https://scontent.fhan14-3.fna.fbcdn.net/v/t1.15752-9/386866355_2657816904384698_2872635496889568044_n.png?_nc_cat=104&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeE1CvXyDnfxSm4w728tubuGZtdziLtkWUxm13OIu2RZTIkBjhAu_Z41t5n7MnOB_1rGaBgN8lp_g45cWH3Tmhm_&_nc_ohc=6Peg7W9etUIAX81iMpq&_nc_ht=scontent.fhan14-3.fna&oh=03_AdQDAK3BhCWgNjj7dFBz3xcOugx1Pi99oinDIsH_dm1IpA&oe=65837066)
-    -  We can upload an image to convert to text.
-    -  Using Speech Recognition Lib in Python.
-    -  Google Translate TextToSpeech.
+    - We can upload an image to convert to text.
+    - Using Speech Recognition Lib in Python.
+    - Google Translate TextToSpeech.
     - Google Translate SpeechToText.
     - Connect to SQLITE for a rich words' database.
     - Game to learn English.
